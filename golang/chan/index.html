@@ -13,7 +13,7 @@
     
     
       
-        <title>chan - Read Notes</title>
+        <title>chan - Read Note</title>
       
     
     
@@ -72,7 +72,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Read Notes" class="md-header__button md-logo" aria-label="Read Notes" data-md-component="logo">
+    <a href="../.." title="Read Note" class="md-header__button md-logo" aria-label="Read Note" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -85,7 +85,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Read Notes
+            Read Note
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -158,13 +158,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Read Notes" class="md-nav__button md-logo" aria-label="Read Notes" data-md-component="logo">
+    <a href="../.." title="Read Note" class="md-nav__button md-logo" aria-label="Read Note" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    Read Notes
+    Read Note
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -244,10 +244,76 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          chan
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         chan
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    异常
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    底层结构
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slice_array/" class="md-nav__link">
+        slice_array
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../defer/" class="md-nav__link">
+        defer
+      </a>
     </li>
   
 
@@ -276,14 +342,14 @@
       
       
         <label class="md-nav__link" for="__nav_4">
-          Ex
+          Algorithm
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Ex" data-md-level="1">
+      <nav class="md-nav" aria-label="Algorithm" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          Ex
+          Algorithm
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -293,22 +359,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ex/other/" class="md-nav__link">
-        Other
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ex/algorithm/" class="md-nav__link">
-        Algorithm
+      <a href="../../al/tree/" class="md-nav__link">
+        tree
       </a>
     </li>
   
@@ -371,6 +423,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    异常
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    底层结构
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -383,6 +457,14 @@
                 
 
 <h1 id="chan">chan</h1>
+<h2 id="_1">异常</h2>
+<p>如果给一个 nil 的 channel 发送数据，会造成永远阻塞。
+如果从一个 nil 的 channel 中接收数据，也会造成永久阻塞。
+给一个已经关闭的 channel 发送数据， 会引起 panic
+从一个已经关闭的 channel 接收数据， 如果缓冲区中为空，则返回一个零
+值。</p>
+<h2 id="_2">底层结构</h2>
+<p>使用了 ring buffer（环形缓冲区) 来缓存写入的数据。</p>
 
               
             </article>
@@ -412,13 +494,13 @@
       
       
         
-        <a href="../../ex/other/" class="md-footer__link md-footer__link--next" aria-label="Next: Other" rel="next">
+        <a href="../slice_array/" class="md-footer__link md-footer__link--next" aria-label="Next: slice_array" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Other
+              slice_array
             </div>
           </div>
           <div class="md-footer__button md-icon">

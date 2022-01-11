@@ -13,7 +13,7 @@
     
     
       
-        <title>Other - Read Notes</title>
+        <title>defer - Read Note</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#other" class="md-skip">
+        <a href="#defer-panic" class="md-skip">
           Skip to content
         </a>
       
@@ -72,7 +72,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Read Notes" class="md-header__button md-logo" aria-label="Read Notes" data-md-component="logo">
+    <a href="../.." title="Read Note" class="md-header__button md-logo" aria-label="Read Note" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -85,13 +85,13 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Read Notes
+            Read Note
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Other
+              defer
             
           </span>
         </div>
@@ -158,13 +158,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Read Notes" class="md-nav__button md-logo" aria-label="Read Notes" data-md-component="logo">
+    <a href="../.." title="Read Note" class="md-nav__button md-logo" aria-label="Read Note" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    Read Notes
+    Read Note
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -205,12 +205,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -233,7 +235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../golang/chan/" class="md-nav__link">
+      <a href="../chan/" class="md-nav__link">
         chan
       </a>
     </li>
@@ -241,41 +243,19 @@
 
             
           
-        </ul>
-      </nav>
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slice_array/" class="md-nav__link">
+        slice_array
+      </a>
     </li>
   
 
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4">
-          Ex
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Ex" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
-          Ex
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+            
           
             
               
@@ -293,12 +273,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Other
+          defer
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Other
+        defer
       </a>
       
         
@@ -317,8 +297,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#other-1" class="md-nav__link">
-    other 1
+  <a href="#defer" class="md-nav__link">
+    defer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panic" class="md-nav__link">
+    panic
   </a>
   
 </li>
@@ -332,14 +319,48 @@
 
             
           
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Algorithm
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Algorithm" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Algorithm
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
             
               
   
   
   
     <li class="md-nav__item">
-      <a href="../algorithm/" class="md-nav__link">
-        Algorithm
+      <a href="../../al/tree/" class="md-nav__link">
+        tree
       </a>
     </li>
   
@@ -409,8 +430,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#other-1" class="md-nav__link">
-    other 1
+  <a href="#defer" class="md-nav__link">
+    defer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#panic" class="md-nav__link">
+    panic
   </a>
   
 </li>
@@ -428,8 +456,16 @@
               
                 
 
-<h1 id="other">other</h1>
-<h2 id="other-1">other 1</h2>
+<h1 id="defer-panic">defer 和 panic</h1>
+<hr />
+<h2 id="defer">defer</h2>
+<p><strong>defer</strong> 执行晚于return , 可以操作命名返回值
+defer执行按倒序
+defer 在<em>1.4.2</em>版本之前会有效率问题
+defer 执行顺序与声明顺序相反</p>
+<h2 id="panic">panic</h2>
+<p>panic 发生时, 中断后续执行，转而执行defer 函数
+所以recover函数只有在defer代码块中才会有效果</p>
 
               
             </article>
@@ -443,7 +479,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../golang/chan/" class="md-footer__link md-footer__link--prev" aria-label="Previous: chan" rel="prev">
+        <a href="../slice_array/" class="md-footer__link md-footer__link--prev" aria-label="Previous: slice_array" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -452,20 +488,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              chan
+              slice_array
             </div>
           </div>
         </a>
       
       
         
-        <a href="../algorithm/" class="md-footer__link md-footer__link--next" aria-label="Next: Algorithm" rel="next">
+        <a href="../../al/tree/" class="md-footer__link md-footer__link--next" aria-label="Next: tree" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Algorithm
+              tree
             </div>
           </div>
           <div class="md-footer__button md-icon">
