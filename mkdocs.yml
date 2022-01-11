@@ -1,0 +1,14 @@
+site_name: Read Notes
+nav:
+    - Home : index.md
+    - Git : git.md
+    - Golang : 
+        - chan : golang\chan.md
+    - Ex :
+        - Other : ex\other.md  
+        - Algorithm : ex\algorithm.md       
+    - Links : links.md
+    - About : about.md
+
+theme:
+  name: material
