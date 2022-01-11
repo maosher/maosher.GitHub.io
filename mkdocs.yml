@@ -1,12 +1,13 @@
-site_name: Read Notes
+site_name: Read Note
 nav:
     - Home : index.md
     - Git : git.md
     - Golang : 
         - chan : golang\chan.md
-    - Ex :
-        - Other : ex\other.md  
-        - Algorithm : ex\algorithm.md       
+        - slice_array : golang\slice_array.md
+        - defer : golang\defer.md
+    - Algorithm :
+        - tree : al\tree.md       
     - Links : links.md
     - About : about.md
 

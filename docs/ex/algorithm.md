@@ -1,3 +1,0 @@
-# algorithm
-
-## ex1
