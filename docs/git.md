@@ -1,4 +1,4 @@
-# git note
+# Git 
 
 ## git work flow
 ![git work flow](img/git.jpg)
