@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://maosher.github.io/no/shell/">
+  <link rel="canonical" href="https://maosher.github.io/al/code/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>shell - My Read Note</title>
+  <title>Code - My Read Note</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "shell";
-    var mkdocs_page_input_path = "no\\shell.md";
-    var mkdocs_page_url = "/no/shell/";
+    var mkdocs_page_name = "Code";
+    var mkdocs_page_input_path = "al\\code.md";
+    var mkdocs_page_url = "/al/code/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -69,27 +69,21 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Algorithm</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../al/tree/">Tree</a>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../tree/">Tree</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../al/code/">Code</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Code</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">非递归中序遍历二叉树</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Network & OS</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../tcp/">tcp</a>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tcp/">tcp</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">shell</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#grep">grep</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#find">find</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#sed">sed</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#awk">awk</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/shell/">shell</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Database</span></p>
@@ -131,11 +125,11 @@
     
       
         
-          <li>Network & OS &raquo;</li>
+          <li>Algorithm &raquo;</li>
         
       
     
-    <li>shell</li>
+    <li>Code</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -147,24 +141,35 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="shell-command">shell command</h1>
-<h2 id="grep">grep</h2>
-<h2 id="find">find</h2>
-<h2 id="sed">sed</h2>
-<h2 id="awk">awk</h2>
-<p><strong>对文件内空按指定分隔符分隔后输出</strong><br />
-awk [选项参数] 'script' var=value file(s)<br />
-awk [选项参数] -f scriptfile var=value file(s) </p>
-<blockquote>
-<p># 每行按空格或TAB分割，输出文本中的1、4项<br />
-awk '{print $1,$4}' log.txt<br />
-# 格式化输出<br />
-awk '{printf "%-8s %-10s\n",$1,$4}' log.txt<br />
-# 使用","分割<br />
-awk -F, '{print $1,$2}'   log.txt<br />
-# 使用多个分隔符.先使用空格分割，然后对分割结果再使用","分割<br />
-awk -F '[ ,]'  '{print $1,$2,$5}'   log.txt</p>
-</blockquote>
+                <h1 id="code">Code</h1>
+<h2 id="_1">非递归中序遍历二叉树</h2>
+<p>枚举当前节点(不存储输出)并用栈存储，节点指向左节点，直到左孩子为null。<br />
+抛出栈顶访问。如果有右节点，访问其右节点重复步骤1，如有没右节点，继续重复步骤2抛出。</p>
+<pre><code class="language-c++">void inOrder(Node *node) {
+  std::stack&lt;Node *&gt; st;
+  while (node != nullptr || !st.empty()) {
+    while (node != nullptr) {
+      st.push(node);
+      node = node-&gt;left;
+    }
+
+    node = st.top();
+    st.pop();
+    std::cout &lt;&lt; node-&gt;value &lt;&lt; std::endl;
+    node = node-&gt;right;
+  }
+}
+
+void inOrderRecursive(Node *node) {
+  if (node-&gt;left != nullptr) {
+    inOrderRecursive(node-&gt;left);
+  }
+  std::cout &lt;&lt; node-&gt;value &lt;&lt; std::endl;
+  if (node-&gt;right != nullptr) {
+    inOrderRecursive(node-&gt;right);
+  }
+}
+</code></pre>
               
             </div>
           </div>
@@ -172,10 +177,10 @@ awk -F '[ ,]'  '{print $1,$2,$5}'   log.txt</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../db/db/" class="btn btn-neutral float-right" title="Database">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../no/tcp/" class="btn btn-neutral float-right" title="tcp">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../tcp/" class="btn btn-neutral" title="tcp"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../tree/" class="btn btn-neutral" title="Tree"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -201,10 +206,10 @@ awk -F '[ ,]'  '{print $1,$2,$5}'   log.txt</p>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../tcp/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../tree/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../db/db/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../no/tcp/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
