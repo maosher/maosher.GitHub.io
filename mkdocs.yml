@@ -1,16 +1,17 @@
-site_name: Read Note
+site_name: My Read Note
+site_url: https://maosher.github.io/
 nav:
     - Home : index.md
     - Git : git.md
     - C++ : 
         - C++11 : cpp\cpp11.md
     - Golang : 
-        - overview : golang\overview.md
-        - chan : golang\chan.md
+        - Goroutine : golang\goroutine.md
         - slice_array : golang\slice_array.md
         - defer : golang\defer.md
     - Algorithm :
-        - tree : al\tree.md   
+        - Tree : al\tree.md   
+        - Code : al\code.md
     - Network & OS :
         - tcp : no\tcp.md
         - shell : no\shell.md
@@ -22,4 +23,5 @@ nav:
     - About : about.md
 
 theme:
-  name: material
+  #name: material
+  name: readthedocs
