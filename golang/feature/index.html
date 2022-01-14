@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://maosher.github.io/third_party/mq/">
+        <link rel="canonical" href="https://maosher.github.io/golang/feature/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.6">
     
     
       
-        <title>MessageQueue - My Read Note</title>
+        <title>Feature - My Read Note</title>
       
     
     
@@ -59,6 +59,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -88,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MessageQueue
+              Feature
             
           </span>
         </div>
@@ -250,12 +255,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -278,7 +285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../golang/goroutine/" class="md-nav__link">
+      <a href="../goroutine/" class="md-nav__link">
         Goroutine
       </a>
     </li>
@@ -292,7 +299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../golang/defer/" class="md-nav__link">
+      <a href="../defer/" class="md-nav__link">
         Defer
       </a>
     </li>
@@ -306,7 +313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../golang/gc/" class="md-nav__link">
+      <a href="../gc/" class="md-nav__link">
         GC
       </a>
     </li>
@@ -318,11 +325,72 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../golang/feature/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Feature
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Feature
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#slice" class="md-nav__link">
+    slice
+  </a>
+  
+    <nav class="md-nav" aria-label="slice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slice_1" class="md-nav__link">
+    slice底层结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice_2" class="md-nav__link">
+    slice扩容
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -334,7 +402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../golang/experience/" class="md-nav__link">
+      <a href="../experience/" class="md-nav__link">
         Project Experience
       </a>
     </li>
@@ -540,14 +608,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
       
       
@@ -568,19 +634,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../third_party/mq/" class="md-nav__link">
         MessageQueue
       </a>
-      
     </li>
   
 
@@ -629,15 +687,83 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#slice" class="md-nav__link">
+    slice
+  </a>
+  
+    <nav class="md-nav" aria-label="slice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slice_1" class="md-nav__link">
+    slice底层结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice_2" class="md-nav__link">
+    slice扩容
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
 
-  <h1>MessageQueue</h1>
-
-
+<h1 id="_1"></h1>
+<h2 id="slice">slice</h2>
+<h3 id="slice_1">slice底层结构</h3>
+<p>切片本身并不是动态数组或者数组指针。它内部实现的数据结构通过指针引用
+底层数组，设定相关属性将数据读写操作限定在指定的区域内。切片本身是一
+个只读对象，其工作机制类似数组指针的一种封装。</p>
+<p>切片对象非常小，是因为它是只有 3 个字段的数据结构：  </p>
+<blockquote>
+<p>指向底层数组的指针<br />
+切片的长度<br />
+切片的容量</p>
+</blockquote>
+<h3 id="slice_2">slice扩容</h3>
+<p>首先判断，如果新申请容量大于 2 倍的旧容量，最终容量就是新申请的容
+量</p>
+<p>否则判断，如果旧切片的长度小于 1024，则最终容量就是旧容量的两倍</p>
+<p>否则判断，如果旧切片长度大于等于 1024，则最终容量从旧容量开始循环增加原来的 1/4, 直到最终容量大于等于新申请的容量</p>
+<p>如果最终容量计算值溢出，则最终容量就是新申请容量</p>
 
               
             </article>
@@ -651,7 +777,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../db/db/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Database" rel="prev">
+        <a href="../gc/" class="md-footer__link md-footer__link--prev" aria-label="Previous: GC" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -660,20 +786,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Database
+              GC
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../links/" class="md-footer__link md-footer__link--next" aria-label="Next: Links" rel="next">
+        <a href="../experience/" class="md-footer__link md-footer__link--next" aria-label="Next: Project Experience" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Links
+              Project Experience
             </div>
           </div>
           <div class="md-footer__button md-icon">

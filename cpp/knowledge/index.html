@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://maosher.github.io/third_party/mq/">
+        <link rel="canonical" href="https://maosher.github.io/cpp/knowledge/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.6">
     
     
       
-        <title>MessageQueue - My Read Note</title>
+        <title>Knowledge - My Read Note</title>
       
     
     
@@ -59,6 +59,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#violatile" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -88,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MessageQueue
+              Knowledge
             
           </span>
         </div>
@@ -230,7 +235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cpp/cpp11/" class="md-nav__link">
+      <a href="../cpp11/" class="md-nav__link">
         C++11
       </a>
     </li>
@@ -540,14 +545,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
       
       
@@ -568,19 +571,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../third_party/mq/" class="md-nav__link">
         MessageQueue
       </a>
-      
     </li>
   
 
@@ -629,15 +624,57 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#violatile" class="md-nav__link">
+    violatile
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defineinline" class="md-nav__link">
+    define和inline函数有什么差别
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
 
-  <h1>MessageQueue</h1>
+  <h1>Knowledge</h1>
 
-
+<h2 id="violatile">violatile</h2>
+<p>violatile关键字通常用来修饰多线程共享的全局变量和IO内存。告诉编译器，不要把此类变量优化到寄存器中，每次都要老老实实的从内存中读取</p>
+<h2 id="defineinline">define和inline函数有什么差别</h2>
+<p>define不是函数，只是在编译前（编译预处理阶段）做简单的字符替换，且不做类型检查。
+inline函数是函数，但在编译时不单独产生代码，而是将代码直接镶嵌到调用处，减少了普通函数调用时的资源消耗，且inline函数因为是函数所以要做参数类型检查。一般的，当一个简单函数（函数内不包含for、while、switch语句）被多次调用时，就应该考虑用inline。</p>
 
               
             </article>
@@ -647,41 +684,6 @@
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../../db/db/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Database" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Database
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../../links/" class="md-footer__link md-footer__link--next" aria-label="Next: Links" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Links
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

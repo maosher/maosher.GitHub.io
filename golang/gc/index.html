@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://maosher.github.io/third_party/mq/">
+        <link rel="canonical" href="https://maosher.github.io/golang/gc/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.6">
     
     
       
-        <title>MessageQueue - My Read Note</title>
+        <title>GC - My Read Note</title>
       
     
     
@@ -59,6 +59,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#gc" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -88,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MessageQueue
+              GC
             
           </span>
         </div>
@@ -250,12 +255,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -278,7 +285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../golang/goroutine/" class="md-nav__link">
+      <a href="../goroutine/" class="md-nav__link">
         Goroutine
       </a>
     </li>
@@ -292,7 +299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../golang/defer/" class="md-nav__link">
+      <a href="../defer/" class="md-nav__link">
         Defer
       </a>
     </li>
@@ -304,11 +311,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../golang/gc/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         GC
       </a>
+      
     </li>
   
 
@@ -320,7 +337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../golang/feature/" class="md-nav__link">
+      <a href="../feature/" class="md-nav__link">
         Feature
       </a>
     </li>
@@ -334,7 +351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../golang/experience/" class="md-nav__link">
+      <a href="../experience/" class="md-nav__link">
         Project Experience
       </a>
     </li>
@@ -540,14 +557,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
       
       
       
@@ -568,19 +583,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../third_party/mq/" class="md-nav__link">
         MessageQueue
       </a>
-      
     </li>
   
 
@@ -629,15 +636,31 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
                 
 
-  <h1>MessageQueue</h1>
-
-
+<h1 id="gc">GC</h1>
 
               
             </article>
@@ -651,7 +674,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../../db/db/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Database" rel="prev">
+        <a href="../defer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Defer" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -660,20 +683,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Database
+              Defer
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../links/" class="md-footer__link md-footer__link--next" aria-label="Next: Links" rel="next">
+        <a href="../feature/" class="md-footer__link md-footer__link--next" aria-label="Next: Feature" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Links
+              Feature
             </div>
           </div>
           <div class="md-footer__button md-icon">
