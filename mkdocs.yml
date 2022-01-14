@@ -7,14 +7,17 @@ nav:
         - C++11 : cpp\cpp11.md
     - Golang : 
         - Goroutine : golang\goroutine.md
-        - slice_array : golang\slice_array.md
-        - defer : golang\defer.md
+        - Defer : golang\defer.md
+        - GC : golang\gc.md
+        - Feature : golang\feature.md
+        - Project Experience : golang\experience.md
     - Algorithm :
         - Tree : al\tree.md   
         - Code : al\code.md
     - Network & OS :
-        - tcp : no\tcp.md
-        - shell : no\shell.md
+        - Tcp : no\tcp.md
+        - Linux shell : no\shell.md
+        - Memory : no\memory.md
     - Database :    
         - Database : db\db.md
     - ThirdParty :
@@ -23,5 +26,5 @@ nav:
     - About : about.md
 
 theme:
-  #name: material
-  name: readthedocs
+  name: material
+  #name: readthedocs
