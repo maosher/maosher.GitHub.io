@@ -28,3 +28,86 @@ void inOrderRecursive(Node *node) {
   }
 }
 ~~~
+
+## 任务是否可完成
+~~~ golang
+package main
+
+import (
+	"fmt"
+)
+
+const (
+	NONE = iota
+	SUCC
+	FAIL
+	PENDING
+)
+
+func canFinish(index int, result []int, taskData [][]int) int {
+	//已经判断过
+	if result[index] != NONE {
+		return result[index]
+	}
+
+	if len(taskData[index]) == 0 {
+		result[index] = SUCC
+		return SUCC
+	}
+
+	result[index] = PENDING
+	for i := 0; i < len(taskData[index]); i++ {
+		ret := canFinish(taskData[index][i], result, taskData)
+		if ret == PENDING {
+			result[index] = FAIL
+			//loop back
+			return FAIL
+		}
+		//one pretask is fail, then fail
+		if ret == FAIL {
+			result[index] = FAIL
+			return FAIL
+		}
+	}
+
+	result[index] = SUCC
+	return SUCC
+}
+func canTaskFinish(taskCnt int, taskData [][]int) bool {
+	result := make([]int, taskCnt)
+	succCnt := 0
+	for i := 0; i < taskCnt; i++ {
+		ret := canFinish(i, result, taskData)
+		if ret == SUCC {
+			succCnt++
+		}
+	}
+	return succCnt == taskCnt
+}
+
+
+~~~
+
+## 动态规划 寻权重值最小的路径
+~~~golang
+func min(x, y int) int {
+	if x < y {
+		return x
+	}
+	return y
+}
+func findMinPath(s [][]int, r [][]int) {
+	r[0][0] = s[0][0]
+	for i := 1; i < WIDTH; i++ {
+		r[i][0] = r[i-1][0] + s[i][0]
+	}
+	for i := 1; i < HEIGHT; i++ {
+		r[0][i] = r[0][i-1] + s[0][i-1]
+	}
+	for i := 1; i < WIDTH; i++ {
+		for j := 1; j < HEIGHT; j++ {
+			r[i][j] = min(r[i][j-1], r[i-1][j]) + s[i][j]
+		}
+	}
+}
+~~~
