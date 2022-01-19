@@ -111,3 +111,54 @@ func findMinPath(s [][]int, r [][]int) {
 	}
 }
 ~~~
+## merge sorted slice 
+~~~ golang
+func mergeSortedSlice(s1 []int, s2 []int) []int {
+	if s1 == nil {
+		return s2
+	}
+	if s2 == nil {
+		return s1
+	}
+
+	idx_s1 := 0
+	idx_s2 := 0
+
+	res := make([]int, 0, len(s1)+len(s2))
+	for {
+		if idx_s1 >= len(s1) {
+			res = append(res, s2[idx_s2:]...)
+			break
+		}
+
+		if idx_s2 >= len(s2) {
+			res = append(res, s1[idx_s1:]...)
+			break
+		}
+
+		if s1[idx_s1] < s2[idx_s2] {
+			res = append(res, s1[idx_s1])
+			idx_s1++
+		} else {
+			res = append(res, s1[idx_s1])
+			idx_s2++
+		}
+	}
+	return res
+}
+~~~
+
+## 反转链表
+~~~ c++ 
+ListNode* reverseList(ListNode *head) {
+    ListNode *cur = head;
+    ListNode *pre = nullptr;
+    while (cur)    {
+        ListNode *tmp = cur->next;
+        cur->next = pre;
+        pre = cur;
+        cur = tmp;
+    }
+    return pre;
+}
+~~~

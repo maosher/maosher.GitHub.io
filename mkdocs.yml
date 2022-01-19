@@ -5,6 +5,7 @@ nav:
     - Git : git.md
     - C++ : 
         - C++11 : cpp\cpp11.md
+        - Knowledge Point : cpp\knowledge.md
     - Golang : 
         - Goroutine : golang\goroutine.md
         - Defer : golang\defer.md
@@ -15,6 +16,7 @@ nav:
         - Tree : al\tree.md   
         - Code : al\code.md
     - Network & OS :
+        - Tools : no\tools.md
         - Tcp : no\tcp.md
         - Linux shell : no\shell.md
         - Memory : no\memory.md
