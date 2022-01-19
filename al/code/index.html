@@ -58,6 +58,8 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp11/">C++11</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpp/knowledge/">Knowledge Point</a>
+                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Golang</span></p>
                 <ul>
@@ -84,11 +86,17 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#_3">动态规划 寻权重值最小的路径</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#merge-sorted-slice">merge sorted slice</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">反转链表</a>
+    </li>
     </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Network & OS</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tools/">Tools</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../no/tcp/">Tcp</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../no/shell/">Linux shell</a>
@@ -259,6 +267,54 @@ func findMinPath(s [][]int, r [][]int) {
     }
 }
 </code></pre>
+<h2 id="merge-sorted-slice">merge sorted slice</h2>
+<pre><code class="language-golang">func mergeSortedSlice(s1 []int, s2 []int) []int {
+    if s1 == nil {
+        return s2
+    }
+    if s2 == nil {
+        return s1
+    }
+
+    idx_s1 := 0
+    idx_s2 := 0
+
+    res := make([]int, 0, len(s1)+len(s2))
+    for {
+        if idx_s1 &gt;= len(s1) {
+            res = append(res, s2[idx_s2:]...)
+            break
+        }
+
+        if idx_s2 &gt;= len(s2) {
+            res = append(res, s1[idx_s1:]...)
+            break
+        }
+
+        if s1[idx_s1] &lt; s2[idx_s2] {
+            res = append(res, s1[idx_s1])
+            idx_s1++
+        } else {
+            res = append(res, s1[idx_s1])
+            idx_s2++
+        }
+    }
+    return res
+}
+</code></pre>
+<h2 id="_4">反转链表</h2>
+<pre><code class="language-c++">ListNode* reverseList(ListNode *head) {
+    ListNode *cur = head;
+    ListNode *pre = nullptr;
+    while (cur)    {
+        ListNode *tmp = cur-&gt;next;
+        cur-&gt;next = pre;
+        pre = cur;
+        cur = tmp;
+    }
+    return pre;
+}
+</code></pre>
               
             </div>
           </div>
@@ -266,7 +322,7 @@ func findMinPath(s [][]int, r [][]int) {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../no/tcp/" class="btn btn-neutral float-right" title="Tcp">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../no/tools/" class="btn btn-neutral float-right" title="Tools">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../tree/" class="btn btn-neutral" title="Tree"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -298,7 +354,7 @@ func findMinPath(s [][]int, r [][]int) {
       <span><a href="../tree/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../no/tcp/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../no/tools/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

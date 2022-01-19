@@ -9,7 +9,7 @@
   
   <link rel="canonical" href="https://maosher.github.io/cpp/knowledge/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Knowledge - My Read Note</title>
+  <title>Knowledge Point - My Read Note</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Knowledge";
+    var mkdocs_page_name = "Knowledge Point";
     var mkdocs_page_input_path = "cpp\\knowledge.md";
     var mkdocs_page_url = "/cpp/knowledge/";
   </script>
@@ -55,8 +55,12 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">C++</span></p>
-                <ul>
+                <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../cpp11/">C++11</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Knowledge Point</a>
+    <ul class="current">
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Golang</span></p>
@@ -81,6 +85,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Network & OS</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tools/">Tools</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../no/tcp/">Tcp</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../no/shell/">Linux shell</a>
@@ -126,8 +132,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>C++ &raquo;</li>
+        
+      
     
-    <li>Knowledge</li>
+    <li>Knowledge Point</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -144,10 +154,24 @@
 <h2 id="defineinline">define和inline函数有什么差别</h2>
 <p>define不是函数，只是在编译前（编译预处理阶段）做简单的字符替换，且不做类型检查。
 inline函数是函数，但在编译时不单独产生代码，而是将代码直接镶嵌到调用处，减少了普通函数调用时的资源消耗，且inline函数因为是函数所以要做参数类型检查。一般的，当一个简单函数（函数内不包含for、while、switch语句）被多次调用时，就应该考虑用inline。</p>
+<h2 id="_1">结构体中位域的对齐：</h2>
+<p>1） 如果相邻位域字段的类型相同，且其位宽之和小于类型的 sizeof 大小，则后面的字段将紧邻前一个字段存储，直到不能容纳为止；<br />
+2） 如果相邻位域字段的类型相同，但其位宽之和大于类型的 sizeof 大小，则后面的字段将从新的存储单元开始，其偏移量为其类型大小的整数倍；<br />
+3） 如果相邻的位域字段的类型不同，则各编译器的具体实现有差异， VC6 采取不压缩方式（不同位域字段存放在不同的位域类型字节中）， Dev-C++ 和 GCC 都采取压缩方式； 
+4） 如果位域字段之间穿插着非位域字段，则不进行压缩。</p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../golang/goroutine/" class="btn btn-neutral float-right" title="Goroutine">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../cpp11/" class="btn btn-neutral" title="C++11"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -171,6 +195,10 @@ inline函数是函数，但在编译时不单独产生代码，而是将代码�
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../cpp11/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../golang/goroutine/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

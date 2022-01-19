@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://maosher.github.io/golang/goroutine/">
+  <link rel="canonical" href="https://maosher.github.io/no/tools/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Goroutine - My Read Note</title>
+  <title>Tools - My Read Note</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Goroutine";
-    var mkdocs_page_input_path = "golang\\goroutine.md";
-    var mkdocs_page_url = "/golang/goroutine/";
+    var mkdocs_page_name = "Tools";
+    var mkdocs_page_input_path = "no\\tools.md";
+    var mkdocs_page_url = "/no/tools/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -62,18 +62,16 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Golang</span></p>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Goroutine</a>
-    <ul class="current">
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/goroutine/">Goroutine</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../defer/">Defer</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/defer/">Defer</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../gc/">GC</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/gc/">GC</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../feature/">Feature</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/feature/">Feature</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../experience/">Project Experience</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/experience/">Project Experience</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Algorithm</span></p>
@@ -84,14 +82,16 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Network & OS</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../no/tools/">Tools</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Tools</a>
+    <ul class="current">
+    </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../no/tcp/">Tcp</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../tcp/">Tcp</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../no/shell/">Linux shell</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../shell/">Linux shell</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../no/memory/">Memory</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../memory/">Memory</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Database</span></p>
@@ -133,11 +133,11 @@
     
       
         
-          <li>Golang &raquo;</li>
+          <li>Network & OS &raquo;</li>
         
       
     
-    <li>Goroutine</li>
+    <li>Tools</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -149,18 +149,8 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="gmp">GMP</h1>
-<h1 id="chan">chan</h1>
-<h2 id="_1">异常</h2>
-<p>如果给一个 nil 的 channel 发送数据，会造成永远阻塞。
-如果从一个 nil 的 channel 中接收数据，也会造成永久阻塞。
-给一个已经关闭的 channel 发送数据， 会引起 panic
-从一个已经关闭的 channel 接收数据， 如果缓冲区中为空，则返回一个零
-值。</p>
-<h2 id="_2">底层结构</h2>
-<p>使用了 ring buffer（环形缓冲区) 来缓存写入的数据。</p>
-<h3 id="_3">终止一个协程</h3>
-<p>runtime.Goexit()</p>
+                <h1 id="_1">性能工具</h1>
+<p><img alt="tcp" src="../img/linux_tools.png" /></p>
               
             </div>
           </div>
@@ -168,10 +158,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../defer/" class="btn btn-neutral float-right" title="Defer">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../tcp/" class="btn btn-neutral float-right" title="Tcp">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../cpp/knowledge/" class="btn btn-neutral" title="Knowledge Point"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../al/code/" class="btn btn-neutral" title="Code"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -197,10 +187,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../cpp/knowledge/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../al/code/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../defer/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../tcp/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

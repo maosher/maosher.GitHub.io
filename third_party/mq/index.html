@@ -58,6 +58,8 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp11/">C++11</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpp/knowledge/">Knowledge Point</a>
+                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Golang</span></p>
                 <ul>
@@ -81,6 +83,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Network & OS</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tools/">Tools</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../no/tcp/">Tcp</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../no/shell/">Linux shell</a>
@@ -96,6 +100,8 @@
                 <p class="caption"><span class="caption-text">ThirdParty</span></p>
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">MessageQueue</a>
+    <ul class="current">
+    </ul>
                     </li>
                 </ul>
                 <ul>
@@ -143,7 +149,11 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="kafka-vs-rabbitmq">Kafka vs RabbitMQ</h1>
+<p>在实际生产应用中，通常会使用kafka作为消息传输的数据管道，rabbitmq作为交易数据作为数据传输管道，主要的取舍因素则是是否存在丢数据的可能；rabbitmq在金融场景中经常使用，具有较高的严谨性，数据丢失的可能性更小，同事具备更高的实时性；而kafka优势主要体现在吞吐量上，虽然可以通过策略实现数据不丢失，但从严谨性角度来讲，大不如rabbitmq；而且由于kafka保证每条消息最少送达一次，有较小的概率会出现数据重复发送的情况；</p>
+<p>RabbitMQ：支持消息的可靠的传递，支持事务，不支持批量操作，基于存储的可靠性的要求存储可以采用内存或硬盘，吞吐量小。
+kafka：内部采用消息的批量处理，数据的存储和获取是本地磁盘顺序批量操作，消息处理的效率高，吞吐量高。</p>
+<h1 id="rabbitmq">RabbitMQ</h1>
               
             </div>
           </div>

@@ -58,6 +58,8 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp11/">C++11</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpp/knowledge/">Knowledge Point</a>
+                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Golang</span></p>
                 <ul>
@@ -81,6 +83,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Network & OS</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tools/">Tools</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../no/tcp/">Tcp</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../no/shell/">Linux shell</a>
@@ -93,6 +97,10 @@
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Database</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#mysql">Mysql</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#mysql_1">Mysql 事务隔离级别</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#redis">Redis</a>
     </li>
@@ -156,6 +164,37 @@
 <p>InnoDB中主键索引B+树是如何组织数据、查询数据的，我们总结一下：</p>
 <p>InnoDB存储引擎的最小存储单元是页，页可以用于存放数据也可以用于存放键值+指针，在B+树中叶子节点存放数据，非叶子节点存放键值+指针。</p>
 <p>索引组织表通过非叶子节点的二分查找法以及指针确定数据在哪个页中，进而在去数据页中查找到需要的数据；</p>
+<h3 id="mysql_1">Mysql 事务隔离级别</h3>
+<p>隔离级别比较和性能：可串行化&gt;可重复读&gt;读已提交&gt;读未提交<br />
+读未提交  </p>
+<blockquote>
+<blockquote>
+<p>事务A可以读取到事务B修改过但未提交的数据。
+可能发生脏读、不可重复读和幻读问题，一般很少使用此隔离级别。  </p>
+</blockquote>
+</blockquote>
+<p>读已提交  </p>
+<blockquote>
+<blockquote>
+<p>在读已提交隔离级别下，事务B只能在事务A修改过并且已提交后才能读取到事务B修改的数据。
+读已提交隔离级别解决了脏读的问题，但可能发生不可重复读和幻读问题，一般很少使用此隔离级别。</p>
+</blockquote>
+</blockquote>
+<p>可重复读  （默认隔离级别)</p>
+<blockquote>
+<blockquote>
+<p>在可重复读隔离级别下，事务B只能在事务A修改过数据并提交后，自己也提交事务后，才能读取到事务B修改的数据。
+可重复读隔离级别解决了脏读和不可重复读的问题，但可能发生幻读问题。</p>
+</blockquote>
+</blockquote>
+<p>可串行化  </p>
+<blockquote>
+<blockquote>
+<p>如果二个事务都是读操作， 不会阻塞， 否则阻塞
+各种问题（脏读、不可重复读、幻读）都不会发生，通过加锁实现（读锁和写锁）。</p>
+</blockquote>
+</blockquote>
+<p>脏读  b.beging, b.update,  a.read, b.rollback   a 读到了更新的数据， 但是b回滚了， a是错误数据</p>
 <h2 id="redis">Redis</h2>
 <p>字符串类型：它的big体现在单个value值很大，一般认为超过10KB就是bigkey。
 非字符串类型：哈希、列表、集合、有序集合，它们的big体现在元素个数太多。一次性取出时

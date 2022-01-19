@@ -58,6 +58,8 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../cpp/cpp11/">C++11</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../cpp/knowledge/">Knowledge Point</a>
+                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Golang</span></p>
                 <ul class="current">
@@ -70,6 +72,18 @@
                     <li class="toctree-l1"><a class="reference internal" href="../feature/">Feature</a>
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Project Experience</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">结构体嵌套</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">字符串的效率问题</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">如何获取一个字符串的字符数：</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#go18-plugin">go1.8动态库 plugin</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chan">使用chan 来限制并发数</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Algorithm</span></p>
@@ -81,6 +95,8 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Network & OS</span></p>
                 <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tools/">Tools</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../no/tcp/">Tcp</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../no/shell/">Linux shell</a>
@@ -143,7 +159,46 @@
           <div role="main">
             <div class="section">
               
-                <p>golang 大量结构体内嵌会使编译速度慢</p>
+                <h1 id="some-experience">Some Experience</h1>
+<h2 id="_1">结构体嵌套</h2>
+<p>golang 大量结构体内嵌会使编译速度慢</p>
+<h2 id="_2">字符串的效率问题</h2>
+<p>需要对一个字符串进行频繁的操作时，谨记在 go 语言中字符串是不可变的（类似 java 和 c#）。使用诸如 a += b 形式连接字符串效率低下，尤其在一个循环内部使用这种形式。这会导致大量的内存开销和拷贝。应该使用一个字符数组代替字符串，将字符串内容写入一个缓存中  bytes.Buffer</p>
+<h2 id="_3">如何获取一个字符串的字符数：</h2>
+<p>utf8.RuneCountInString(str)</p>
+<h2 id="go18-plugin">go1.8动态库 plugin</h2>
+<p>go build -buildmode=plugin</p>
+<pre><code class="language-golang">pdll, err := plugin.Open(&quot;test.so&quot;)
+if err != nil {
+    //...
+    return 
+}
+//获取动态库方法
+fun, err := pdll.Lookup(&quot;TestFunc&quot;)
+if err != nil {
+        //...
+        return
+}
+
+</code></pre>
+<h2 id="chan">使用chan 来限制并发数</h2>
+<pre><code class="language-golang">var sem = make(chan int, 1000)
+func handle(r *Request) {
+    //do something , will cost lot time
+    &lt;-sem
+}
+func Server(queue chan *Request) {
+    for {
+        sem &lt;- 1
+        request := &lt;-queue
+        go handle(request)
+    }
+}
+func main() {
+    queue := make(chan *Request)
+    go Server(queue)
+}
+</code></pre>
               
             </div>
           </div>
