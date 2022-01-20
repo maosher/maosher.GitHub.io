@@ -79,6 +79,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#_3">如何获取一个字符串的字符数：</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#golang-with-lua">Golang with Lua</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#go18-plugin">go1.8动态库 plugin</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#chan">使用chan 来限制并发数</a>
@@ -91,6 +93,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../al/tree/">Tree</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../al/code/">Code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../al/skiplist/">SkipList</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Network & OS</span></p>
@@ -106,12 +110,23 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Database</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../db/db/">Database</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../db/mysql/">Mysql</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../db/kv/">KV</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../db/mongodb/">MongoDb</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">ThirdParty</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../third_party/mq/">MessageQueue</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Game Design</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../game/framework/">Framework</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../game/map/">Map</a>
                     </li>
                 </ul>
                 <ul>
@@ -166,6 +181,8 @@
 <p>需要对一个字符串进行频繁的操作时，谨记在 go 语言中字符串是不可变的（类似 java 和 c#）。使用诸如 a += b 形式连接字符串效率低下，尤其在一个循环内部使用这种形式。这会导致大量的内存开销和拷贝。应该使用一个字符数组代替字符串，将字符串内容写入一个缓存中  bytes.Buffer</p>
 <h2 id="_3">如何获取一个字符串的字符数：</h2>
 <p>utf8.RuneCountInString(str)</p>
+<h2 id="golang-with-lua">Golang with Lua</h2>
+<p>GopherLua  CGo</p>
 <h2 id="go18-plugin">go1.8动态库 plugin</h2>
 <p>go build -buildmode=plugin</p>
 <pre><code class="language-golang">pdll, err := plugin.Open(&quot;test.so&quot;)

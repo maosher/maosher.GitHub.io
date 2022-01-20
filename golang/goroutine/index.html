@@ -65,6 +65,8 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Goroutine</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">工具</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../defer/">Defer</a>
@@ -82,6 +84,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../al/code/">Code</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../al/skiplist/">SkipList</a>
+                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Network & OS</span></p>
                 <ul>
@@ -96,12 +100,23 @@
                 </ul>
                 <p class="caption"><span class="caption-text">Database</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../db/db/">Database</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../db/mysql/">Mysql</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../db/kv/">KV</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../db/mongodb/">MongoDb</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">ThirdParty</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../third_party/mq/">MessageQueue</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Game Design</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../game/framework/">Framework</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../game/map/">Map</a>
                     </li>
                 </ul>
                 <ul>
@@ -150,16 +165,29 @@
             <div class="section">
               
                 <h1 id="gmp">GMP</h1>
+<ul>
+<li>全局队列（Global Queue）：存放等待运行的 G。  </li>
+<li>P 的本地队列：同全局队列类似，存放的也是等待运行的 G，存的数量有限，不超过 256 个。新建 G’时，G’优先加入到 P 的本地队列，如果队列满了，则会把本地队*列中一半的 G 移动到全局队列。  </li>
+<li>P 列表：所有的 P 都在程序启动时创建，并保存在数组中，最多有 GOMAXPROCS(可配置) 个。    </li>
+<li>
+<p>M：线程想运行任务就得获取 P，从 P 的本地队列获取 G，P 队列为空时，M 也会尝试从全局队列拿一批 G 放到 P 的本地队列，或从其他 P 的本地队列偷一半放到自己 P 的本地队列。M 运行 G，G 执行之后，M 会从 P 获取下一个 G，不断重复下去。  </p>
+</li>
+<li>
+<p>M 与 P 是 1：1 的关系</p>
+</li>
+</ul>
+<h2 id="_1">工具</h2>
+<p>go tool trace</p>
 <h1 id="chan">chan</h1>
-<h2 id="_1">异常</h2>
+<h2 id="_2">异常</h2>
 <p>如果给一个 nil 的 channel 发送数据，会造成永远阻塞。
 如果从一个 nil 的 channel 中接收数据，也会造成永久阻塞。
 给一个已经关闭的 channel 发送数据， 会引起 panic
 从一个已经关闭的 channel 接收数据， 如果缓冲区中为空，则返回一个零
 值。</p>
-<h2 id="_2">底层结构</h2>
+<h2 id="_3">底层结构</h2>
 <p>使用了 ring buffer（环形缓冲区) 来缓存写入的数据。</p>
-<h3 id="_3">终止一个协程</h3>
+<h3 id="_4">终止一个协程</h3>
 <p>runtime.Goexit()</p>
               
             </div>

@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://maosher.github.io/no/tcp/">
+  <link rel="canonical" href="https://maosher.github.io/db/mysql/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Tcp - My Read Note</title>
+  <title>Mysql - My Read Note</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Tcp";
-    var mkdocs_page_input_path = "no\\tcp.md";
-    var mkdocs_page_url = "/no/tcp/";
+    var mkdocs_page_name = "Mysql";
+    var mkdocs_page_input_path = "db\\mysql.md";
+    var mkdocs_page_url = "/db/mysql/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -84,33 +84,27 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Network & OS</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../tools/">Tools</a>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tools/">Tools</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Tcp</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_1">三次握手</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_2">四次挥手</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#time_wait">为什么要设计 TIME_WAIT 状态</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#tcp_tw_reuse">tcp_tw_reuse 风险</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tcp/">Tcp</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../shell/">Linux shell</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/shell/">Linux shell</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../memory/">Memory</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/memory/">Memory</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Database</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../db/mysql/">Mysql</a>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Mysql</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#mysql_1">Mysql 事务隔离级别</a>
+    </li>
+    </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../db/kv/">KV</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../kv/">KV</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../db/mongodb/">MongoDb</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../mongodb/">MongoDb</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">ThirdParty</span></p>
@@ -154,11 +148,11 @@
     
       
         
-          <li>Network & OS &raquo;</li>
+          <li>Database &raquo;</li>
         
       
     
-    <li>Tcp</li>
+    <li>Mysql</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -170,24 +164,41 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="tcp">tcp</h1>
-<p><img alt="tcp" src="../img/tcp1.webp" /></p>
-<h2 id="_1">三次握手</h2>
-<p>「第一次握手」 ：客户端先向服务端发送一个请求连接的报文段，这个报文段SYN位设置为1,序列号Seq设置为某一值，假设为X，发送出去之后客户端进入SYN_SEND状态，等待服务器的确认；</p>
-<p>「第二次握手」 ：服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Ack X+1；同时，自己自己还要发送SYN请求信息，将SYN位置为1，Seq为Y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；</p>
-<p>「第三次握手」 ：客户端收到服务器的SYN+ACK报文段。然后将Ack 设置为Y+1，向服务器发送ACK报文段，这个报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态，完成TCP三次握手。</p>
-<h2 id="_2">四次挥手</h2>
-<p>「第一次分手」 ：主机1，设置序列号Seq和确认包ACK，假设seq为x+2,ACK=y+1,再将FIN标志位设置为1,向主机2发送FIN报文段；之后主机1进入FIN_WAIT_1状态；这表示主机1没有数据要发送给主机2了；</p>
-<p>「第二次分手」 ：主机2收到了主机1发送的FIN报文段，向主机1回一个ACK报文段(其值为接收到的FIN报文的seq值+1)；主机1进入FIN_WAIT_2状态,等待主机二的断开请求包FIN；</p>
-<p>「第三次分手」 ：主机2向主机1发送FIN报文段，意思是我可以断开连接了,请求关闭连接，同时主机2进入CLOSE_WAIT状态；</p>
-<p>「第四次分手」 ：主机1收到主机2发送的FIN报文段，向主机2发送ACK报文段,值为刚刚接收到的FIN包Seq值+1，然后主机1进入TIME_WAIT状态；主机2收到主机1的ACK报文段以后，就关闭连接；此时，主机1等待2MSL后依然没有收到回复，则证明Server端已正常关闭，那好，主机1也可以关闭连接了。</p>
-<h2 id="time_wait">为什么要设计 TIME_WAIT 状态</h2>
-<p>原因一：防止历史连接中的数据，被后面相同四元组的连接错误的接收<br />
-<img alt="tcp" src="../img/time_wait_1.webp" />
-原因二：保证「被动关闭连接」的一方，能被正确的关闭  ， 断开连接一方太早close 状态， 被动方可能没有收到最后的 ack , 重发后面状态就坏了
-<img alt="tcp" src="../img/time_wait_2.webp" /></p>
-<h2 id="tcp_tw_reuse">tcp_tw_reuse 风险</h2>
-<p>开启 tcp_tw_reuse 风险，因为快速复用 TIME_WAIT,  状态的端口，导致新连接可能被回绕序列号的 RST 报文断开了，而如果不跳过 TIME_WAIT 状态，而是停留 2MSL 时长，那么这个 RST 报文就不会出现下一个新的连接。</p>
+                <h1 id="mysql">Mysql</h1>
+<p>InnoDB中主键索引B+树是如何组织数据、查询数据的，我们总结一下：</p>
+<p>InnoDB存储引擎的最小存储单元是页，页可以用于存放数据也可以用于存放键值+指针，在B+树中叶子节点存放数据，非叶子节点存放键值+指针。</p>
+<p>索引组织表通过非叶子节点的二分查找法以及指针确定数据在哪个页中，进而在去数据页中查找到需要的数据；</p>
+<h2 id="mysql_1">Mysql 事务隔离级别</h2>
+<p>隔离级别比较和性能：可串行化&gt;可重复读&gt;读已提交&gt;读未提交<br />
+读未提交  </p>
+<blockquote>
+<blockquote>
+<p>事务A可以读取到事务B修改过但未提交的数据。
+可能发生脏读、不可重复读和幻读问题，一般很少使用此隔离级别。  </p>
+</blockquote>
+</blockquote>
+<p>读已提交  </p>
+<blockquote>
+<blockquote>
+<p>在读已提交隔离级别下，事务B只能在事务A修改过并且已提交后才能读取到事务B修改的数据。
+读已提交隔离级别解决了脏读的问题，但可能发生不可重复读和幻读问题，一般很少使用此隔离级别。</p>
+</blockquote>
+</blockquote>
+<p>可重复读  （默认隔离级别)</p>
+<blockquote>
+<blockquote>
+<p>在可重复读隔离级别下，事务B只能在事务A修改过数据并提交后，自己也提交事务后，才能读取到事务B修改的数据。
+可重复读隔离级别解决了脏读和不可重复读的问题，但可能发生幻读问题。</p>
+</blockquote>
+</blockquote>
+<p>可串行化 , 有序的</p>
+<blockquote>
+<blockquote>
+<p>如果二个事务都是读操作， 不会阻塞， 否则阻塞
+各种问题（脏读、不可重复读、幻读）都不会发生，通过加锁实现（读锁和写锁）。</p>
+</blockquote>
+</blockquote>
+<p>事务并发可能出错的情况 脏读  不可重复读 幻读</p>
               
             </div>
           </div>
@@ -195,10 +206,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../shell/" class="btn btn-neutral float-right" title="Linux shell">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../kv/" class="btn btn-neutral float-right" title="KV">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../tools/" class="btn btn-neutral" title="Tools"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../no/memory/" class="btn btn-neutral" title="Memory"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -224,10 +235,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../tools/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../no/memory/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../shell/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../kv/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

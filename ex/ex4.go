@@ -13,13 +13,10 @@ func mergeSortedSlice(s1 []int, s2 []int) []int {
 	idx_s1 := 0
 	idx_s2 := 0
 
-	// res := make([]int, len(s1)+len(s2))
 	res := make([]int, 0, len(s1)+len(s2))
-	// idx := 0
 	for {
 		if idx_s1 >= len(s1) {
 			res = append(res, s2[idx_s2:]...)
-			// res = append(res[:idx], s2[idx_s2:]...)
 			break
 		}
 
@@ -30,14 +27,11 @@ func mergeSortedSlice(s1 []int, s2 []int) []int {
 
 		if s1[idx_s1] < s2[idx_s2] {
 			res = append(res, s1[idx_s1])
-			// res[idx] = s1[idx_s1]
 			idx_s1++
 		} else {
 			res = append(res, s1[idx_s1])
-			// res[idx] = s2[idx_s2]
 			idx_s2++
 		}
-		// idx++
 	}
 	return res
 }
