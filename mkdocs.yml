@@ -15,15 +15,21 @@ nav:
     - Algorithm :
         - Tree : al\tree.md   
         - Code : al\code.md
+        - SkipList : al\skiplist.md
     - Network & OS :
         - Tools : no\tools.md
         - Tcp : no\tcp.md
         - Linux shell : no\shell.md
         - Memory : no\memory.md
     - Database :    
-        - Database : db\db.md
+        - Mysql : db\mysql.md
+        - KV : db\kv.md
+        - MongoDb : db\mongodb.md
     - ThirdParty :
-        - MessageQueue : third_party\mq.md
+        - MessageQueue : third_party\mq.md        
+    - Game Design :
+        - Framework : game\framework.md
+        - Map : game\map.md
     - Links : links.md
     - About : about.md
 

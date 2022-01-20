@@ -8,6 +8,11 @@ golang 大量结构体内嵌会使编译速度慢
 
 ## 如何获取一个字符串的字符数：
 utf8.RuneCountInString(str)
+
+## Golang with Lua
+GopherLua  CGo
+
+
 ## go1.8动态库 plugin 
 go build -buildmode=plugin
 ~~~ golang

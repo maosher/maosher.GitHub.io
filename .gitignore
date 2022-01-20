@@ -1,3 +1,4 @@
 site/
 docs/ex
-.vscode/
+.vscode/*
+.vscode
