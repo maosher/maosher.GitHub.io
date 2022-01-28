@@ -92,6 +92,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#_5">反转链表</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#m">列表倒数到M个节点</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../skiplist/">SkipList</a>
@@ -329,6 +331,31 @@ func findMinPath(s [][]int, r [][]int) {
         cur = tmp;
     }
     return pre;
+}
+</code></pre>
+<h2 id="m">列表倒数到M个节点</h2>
+<pre><code class="language-golang">func pickFromTail(l *list.List, m int) *list.Element {
+    if m &lt;= 0 {
+        return nil
+    }
+    left := l.Front()
+    right := left.Next()
+    dis := 0
+    for {
+        if right == nil {
+            break
+        }
+        right = right.Next()
+        if dis == m-1 {
+            left = left.Next()
+        } else {
+            dis++
+        }
+    }
+    if dis == m-1 {
+        return left
+    }
+    return nil
 }
 </code></pre>
               

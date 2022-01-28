@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://maosher.github.io/no/memory/">
+  <link rel="canonical" href="https://maosher.github.io/third_party/etcd_zookeeper/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Memory - My Read Note</title>
+  <title>Etcd 和 Zookeeper - My Read Note</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Memory";
-    var mkdocs_page_input_path = "no\\memory.md";
-    var mkdocs_page_url = "/no/memory/";
+    var mkdocs_page_name = "Etcd \u548c Zookeeper";
+    var mkdocs_page_input_path = "third_party\\etcd_zookeeper.md";
+    var mkdocs_page_url = "/third_party/etcd_zookeeper/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -84,20 +84,14 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Network & OS</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../tools/">Tools</a>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tools/">Tools</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tcp/">Tcp</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tcp/">Tcp</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../shell/">Linux shell</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/shell/">Linux shell</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Memory</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#mmap">mmap</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#sendfile">sendfile</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/memory/">Memory</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Database</span></p>
@@ -111,7 +105,7 @@
                 </ul>
                 <p class="caption"><span class="caption-text">ThirdParty</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../third_party/mq/">MessageQueue</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../mq/">MessageQueue</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Game Design</span></p>
@@ -149,12 +143,8 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Network & OS &raquo;</li>
-        
-      
     
-    <li>Memory</li>
+    <li>Etcd 和 Zookeeper</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -166,22 +156,16 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="zero-copy">Zero Copy</h1>
-<h2 id="mmap">mmap</h2>
-<h2 id="sendfile">sendfile</h2>
+                <h1 id="etcd-zookeeper">Etcd 和 Zookeeper</h1>
+<p>更轻量级(Etcd基于GO语言开发,Zookeeper基于Java开发)<br />
+高负载下的稳定读写<br />
+数据模型的多版本并发控制<br />
+稳定的watcher功能，通知订阅者监听值的变化(Zookeeper基于数据的监听是一次性的，每次监听完成还需重新注册)<br />
+客户端协议使用GRPC协议，支持语言更广泛  </p>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../../db/mysql/" class="btn btn-neutral float-right" title="Mysql">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../shell/" class="btn btn-neutral" title="Linux shell"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -205,10 +189,6 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../shell/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../../db/mysql/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
