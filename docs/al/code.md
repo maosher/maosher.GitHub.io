@@ -166,3 +166,29 @@ ListNode* reverseList(ListNode *head) {
     return pre;
 }
 ~~~
+## 列表倒数到M个节点
+~~~ golang 
+func pickFromTail(l *list.List, m int) *list.Element {
+	if m <= 0 {
+		return nil
+	}
+	left := l.Front()
+	right := left.Next()
+	dis := 0
+	for {
+		if right == nil {
+			break
+		}
+		right = right.Next()
+		if dis == m-1 {
+			left = left.Next()
+		} else {
+			dis++
+		}
+	}
+	if dis == m-1 {
+		return left
+	}
+	return nil
+}
+~~~
