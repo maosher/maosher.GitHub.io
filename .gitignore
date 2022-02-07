@@ -1,4 +1,5 @@
 site/
 docs/ex
+ex/
 .vscode/*
 .vscode
