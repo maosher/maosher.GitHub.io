@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://maosher.github.io/no/memory/">
+  <link rel="canonical" href="https://maosher.github.io/third_party/etc/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Memory - My Read Note</title>
+  <title>Etcd - My Read Note</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Memory";
-    var mkdocs_page_input_path = "no\\memory.md";
-    var mkdocs_page_url = "/no/memory/";
+    var mkdocs_page_name = "Etcd";
+    var mkdocs_page_input_path = "third_party\\etc.md";
+    var mkdocs_page_url = "/third_party/etc/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -84,24 +84,14 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Network & OS</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../tools/">Tools</a>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tools/">Tools</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tcp/">Tcp</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tcp/">Tcp</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../shell/">Linux shell</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/shell/">Linux shell</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Memory</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#mmap">mmap</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#sendfile">sendfile</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#splice">splice</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#o_direct-flag">O_DIRECT flag</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/memory/">Memory</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Database</span></p>
@@ -115,7 +105,7 @@
                 </ul>
                 <p class="caption"><span class="caption-text">ThirdParty</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../third_party/mq/">MessageQueue</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../mq/">MessageQueue</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Game Design</span></p>
@@ -153,12 +143,8 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Network & OS &raquo;</li>
-        
-      
     
-    <li>Memory</li>
+    <li>Etcd</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -170,52 +156,12 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="zero-copy">Zero Copy</h1>
-<p>用户缓冲区 &lt;-&gt; 内核缓冲区 &lt;-&gt; IO设备
-二次内存拷贝</p>
-<p>零拷贝的目标有以下二个<br />
-+ 避免数据拷贝<br />
-    * 避免操作系统内核缓冲区之间进行数据拷贝操作。<br />
-    * 避免操作系统内核和用户应用程序地址空间这两者之间进行数据拷贝操作。
-    * 用户应用程序可以避开操作系统直接访问硬件存储。
-    * 数据传输尽量让 DMA 来做。
-* 将多种操作结合在一起
-    * 避免不必要的系统调用和上下文切换。
-    * 需要拷贝的数据可以先被缓存起来。
-    * 对数据进行处理尽量让硬件来做。  </p>
-<h2 id="mmap">mmap</h2>
-<p>将读缓冲区和用户缓冲区地址进行映射，内核和应用共享这块缓冲区，从而减少了读缓冲区到用户的缓冲区的一次拷贝。</p>
-<p><img alt="tcp" src="../img/mmap.png" /></p>
-<p>要注意的点:<br />
-* mmap的文件被其它文件更改，截断 发生sigbus信号中断，解决方式：
-    * 处理sigbus 
-    * 对文件加锁 （推荐）
-    * 使用sendfile （linux kernal 2.1）</p>
-<h2 id="sendfile">sendfile</h2>
-<p>只能从文件传输到套间字  </p>
-<p>ssize_t sendfile(int out_fd, int in_fd, off_t *offset, size_t count);<br />
-out_fd 必须是socket
-in_fd 必须是可以mmap的file</p>
-<p><img alt="tcp" src="../img/sendfile.png" /></p>
-<h2 id="splice">splice</h2>
-<p>基于linux 管道缓冲机制的复制 kernal 2.6.21</p>
-<h2 id="o_direct-flag">O_DIRECT flag</h2>
-<p>kernal 2.4.10
-绕过操作系统的page cache, 直接进入通用块设备层</p>
-<h1 id="copy-on-write">Copy On Write</h1>
+                <h1 id="etcd">Etcd</h1>
+<h2 id="_1">一致性算法</h2>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../../db/mysql/" class="btn btn-neutral float-right" title="Mysql">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../shell/" class="btn btn-neutral" title="Linux shell"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -239,10 +185,6 @@ in_fd 必须是可以mmap的file</p>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../shell/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../../db/mysql/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
