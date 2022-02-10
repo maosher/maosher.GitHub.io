@@ -9,7 +9,23 @@ redis-cli --bigkeys  有风险! 在slave 本机执行，避免网络开销
 
 debug object ${key}命令获取键值的相关信息
 
-String, Set, Hash, List, SortedSet 
+### 数据类型和底层数据结构
+![](img/db_redis_1.png)
++ 字符串String 
+    + int 编码：保存的是可以用 long 类型表示的整数值。
+    + embstr 编码：保存长度小于44字节的字符串（before redis3.2 39字节）。
+    + raw 编码：保存长度大于44字节的字符串（before redis3.2 39字节）。 
++ 集合Set  
++ 哈希Hash  
++ 列表List  
++ 有序集SortedSet    
+ 
++ 简单动态字符串（SDS）  
++ 字典   
++ 链表  
++ 跳跃表  
++ 整数集合  
++ 压缩列表  
 
 ### Redis做异步队列么
 使用list结构作为队列，rpush生产消息，lpop消费消息。当lpop没有消息的时候，要适当sleep一会再重试。  

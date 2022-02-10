@@ -12,6 +12,7 @@ utf8.RuneCountInString(str)
 ## Golang with Lua
 GopherLua  CGo
 
+## go tools
 
 ## go1.8动态库 plugin 
 go build -buildmode=plugin
