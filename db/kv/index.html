@@ -100,6 +100,8 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">KV</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">数据类型和底层数据结构</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#redis_1">Redis做异步队列么</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#redis_2">redis如何实现延时队列</a>
@@ -173,7 +175,24 @@
 redis-cli --bigkeys  有风险! 在slave 本机执行，避免网络开销
 可以使用 --i 0.1 代表100毫秒执行一次</p>
 <p>debug object ${key}命令获取键值的相关信息</p>
-<p>String, Set, Hash, List, SortedSet </p>
+<h3 id="_1">数据类型和底层数据结构</h3>
+<p><img alt="" src="../img/db_redis_1.png" />
++ 字符串String 
+    + int 编码：保存的是可以用 long 类型表示的整数值。
+    + embstr 编码：保存长度小于44字节的字符串（before redis3.2 39字节）。
+    + raw 编码：保存长度大于44字节的字符串（before redis3.2 39字节）。 
++ 集合Set<br />
++ 哈希Hash<br />
++ 列表List<br />
++ 有序集SortedSet    </p>
+<ul>
+<li>简单动态字符串（SDS）  </li>
+<li>字典   </li>
+<li>链表  </li>
+<li>跳跃表  </li>
+<li>整数集合  </li>
+<li>压缩列表  </li>
+</ul>
 <h3 id="redis_1">Redis做异步队列么</h3>
 <p>使用list结构作为队列，rpush生产消息，lpop消费消息。当lpop没有消息的时候，要适当sleep一会再重试。<br />
 可不可以不用sleep呢？list还有个指令叫blpop，在没有消息的时候，它会阻塞住直到消息到来。 
