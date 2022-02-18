@@ -71,15 +71,15 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Feature</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#slice">slice</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#slice_1">slice底层结构</a>
+    <li class="toctree-l2"><a class="reference internal" href="#slice_1">slice底层结构</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#slice_2">slice扩容</a>
+    <li class="toctree-l2"><a class="reference internal" href="#slice_2">slice扩容</a>
     </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#slcie">slcie 操作</a>
     </li>
     </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../slice/">Slice & Array</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../experience/">Project Experience</a>
                     </li>
@@ -170,8 +170,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1"></h1>
-<h2 id="slice">slice</h2>
+                <h2 id="slice">slice</h2>
 <h3 id="slice_1">slice底层结构</h3>
 <p>切片本身并不是动态数组或者数组指针。它内部实现的数据结构通过指针引用
 底层数组，设定相关属性将数据读写操作限定在指定的区域内。切片本身是一
@@ -188,6 +187,15 @@
 <p>否则判断，如果旧切片的长度小于 1024，则最终容量就是旧容量的两倍</p>
 <p>否则判断，如果旧切片长度大于等于 1024，则最终容量从旧容量开始循环增加原来的 1/4, 直到最终容量大于等于新申请的容量</p>
 <p>如果最终容量计算值溢出，则最终容量就是新申请容量</p>
+<h3 id="slcie">slcie 操作</h3>
+<p>提前分配容量，以减少内存分配次数
++ 在<strong>频繁变更长度的字符串操作</strong>中用预置长度的[]byte 代替string ，比如 字符串拼接
++ 尽量对有容量的slice 执行append
++ 预分度长度后， append稍强于copy
++ 切片垃圾回收陷阱
+    + s = s[:len(s)-1]  删掉最后一个元素，最后一个元素没有gc, 
+    + s = ss[2:4]   s引用ss中一部分数据， ss其它数据不会gc
+    + </p>
               
             </div>
           </div>
@@ -195,7 +203,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../experience/" class="btn btn-neutral float-right" title="Project Experience">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../slice/" class="btn btn-neutral float-right" title="Slice & Array">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../gc/" class="btn btn-neutral" title="GC"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -227,7 +235,7 @@
       <span><a href="../gc/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../experience/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../slice/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

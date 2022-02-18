@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://maosher.github.io/no/tools/">
+  <link rel="canonical" href="https://maosher.github.io/golang/slice/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Tools - My Read Note</title>
+  <title>Slice & Array - My Read Note</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Tools";
-    var mkdocs_page_input_path = "no\\tools.md";
-    var mkdocs_page_url = "/no/tools/";
+    var mkdocs_page_name = "Slice & Array";
+    var mkdocs_page_input_path = "golang\\slice.md";
+    var mkdocs_page_url = "/golang/slice/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -62,18 +62,26 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Golang</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/goroutine/">Goroutine</a>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../goroutine/">Goroutine</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/defer/">Defer</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../defer/">Defer</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/gc/">GC</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../gc/">GC</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/feature/">Feature</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../feature/">Feature</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/slice/">Slice & Array</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Slice & Array</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#slice_1">slice底层结构</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#slice_2">slice扩容</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#slcie">slcie 操作</a>
+    </li>
+    </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/experience/">Project Experience</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../experience/">Project Experience</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Algorithm</span></p>
@@ -86,16 +94,14 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Network & OS</span></p>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Tools</a>
-    <ul class="current">
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tools/">Tools</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../tcp/">Tcp</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/tcp/">Tcp</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../shell/">Linux shell</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/shell/">Linux shell</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../memory/">Memory</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../no/memory/">Memory</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Database</span></p>
@@ -148,11 +154,11 @@
     
       
         
-          <li>Network & OS &raquo;</li>
+          <li>Golang &raquo;</li>
         
       
     
-    <li>Tools</li>
+    <li>Slice & Array</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -164,8 +170,32 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">性能工具</h1>
-<p><img alt="tcp" src="../img/linux_tools.png" /></p>
+                <h2 id="slice">slice</h2>
+<h3 id="slice_1">slice底层结构</h3>
+<p>切片本身并不是动态数组或者数组指针。它内部实现的数据结构通过指针引用
+底层数组，设定相关属性将数据读写操作限定在指定的区域内。切片本身是一
+个只读对象，其工作机制类似数组指针的一种封装。</p>
+<p>切片对象非常小，是因为它是只有 3 个字段的数据结构：  </p>
+<blockquote>
+<p>指向底层数组的指针<br />
+切片的长度<br />
+切片的容量</p>
+</blockquote>
+<h3 id="slice_2">slice扩容</h3>
+<p>首先判断，如果新申请容量大于 2 倍的旧容量，最终容量就是新申请的容
+量</p>
+<p>否则判断，如果旧切片的长度小于 1024，则最终容量就是旧容量的两倍</p>
+<p>否则判断，如果旧切片长度大于等于 1024，则最终容量从旧容量开始循环增加原来的 1/4, 直到最终容量大于等于新申请的容量</p>
+<p>如果最终容量计算值溢出，则最终容量就是新申请容量</p>
+<h3 id="slcie">slcie 操作</h3>
+<p>提前分配容量，以减少内存分配次数
++ 在<strong>频繁变更长度的字符串操作</strong>中用预置长度的[]byte 代替string ，比如 字符串拼接
++ 尽量对有容量的slice 执行append
++ 预分度长度后， append稍强于copy
++ 切片垃圾回收陷阱
+    + s = s[:len(s)-1]  删掉最后一个元素，最后一个元素没有gc, 
+    + s = ss[2:4]   s引用ss中一部分数据， ss其它数据不会gc
+    + </p>
               
             </div>
           </div>
@@ -173,10 +203,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tcp/" class="btn btn-neutral float-right" title="Tcp">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../experience/" class="btn btn-neutral float-right" title="Project Experience">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../al/skiplist/" class="btn btn-neutral" title="SkipList"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../feature/" class="btn btn-neutral" title="Feature"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -202,10 +232,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../al/skiplist/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../feature/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../tcp/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../experience/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

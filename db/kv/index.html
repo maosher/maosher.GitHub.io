@@ -71,6 +71,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../golang/feature/">Feature</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/slice/">Slice & Array</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../golang/experience/">Project Experience</a>
                     </li>
                 </ul>
@@ -184,7 +186,9 @@ redis-cli --bigkeys  有风险! 在slave 本机执行，避免网络开销
 + 集合Set<br />
 + 哈希Hash<br />
 + 列表List<br />
-+ 有序集SortedSet    </p>
++ 有序集SortedSet  <br />
+    + 使用ziplist 编码：保存的元素数量小于128； 保存的所有元素长度都小于64字节  <br />
+    + 其实有序集合单独使用字典或跳跃表其中一种数据结构都可以实现，但是这里使用两种数据结构组合起来，原因是假如我们单独使用 字典，虽然能 以 O(1) 的时间复杂度查找成员的分值，但是因为字典是以无序的方式来保存集合元素，所以每次进行范围操作的时候都要进行排序；假如我们单独使用跳跃表来实现，虽然能执行范围操作，但是查找操作有 O(1)的复杂度变为了O(logN)</p>
 <ul>
 <li>简单动态字符串（SDS）  </li>
 <li>字典   </li>
