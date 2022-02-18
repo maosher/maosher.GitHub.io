@@ -73,11 +73,15 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Slice & Array</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#array">array</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#slice_1">slice底层结构</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#slice_2">slice扩容</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#slcie">slcie 操作</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#slice_3">slice 操作陷阱</a>
     </li>
     </ul>
                     </li>
@@ -171,6 +175,11 @@
             <div class="section">
               
                 <h2 id="slice">slice</h2>
+<h3 id="array">array</h3>
+<ul>
+<li>数组是值类型， 传递时发生拷贝</li>
+<li>不同长度数据，是不同类型  </li>
+</ul>
 <h3 id="slice_1">slice底层结构</h3>
 <p>切片本身并不是动态数组或者数组指针。它内部实现的数据结构通过指针引用
 底层数组，设定相关属性将数据读写操作限定在指定的区域内。切片本身是一
@@ -188,14 +197,20 @@
 <p>否则判断，如果旧切片长度大于等于 1024，则最终容量从旧容量开始循环增加原来的 1/4, 直到最终容量大于等于新申请的容量</p>
 <p>如果最终容量计算值溢出，则最终容量就是新申请容量</p>
 <h3 id="slcie">slcie 操作</h3>
-<p>提前分配容量，以减少内存分配次数
-+ 在<strong>频繁变更长度的字符串操作</strong>中用预置长度的[]byte 代替string ，比如 字符串拼接
-+ 尽量对有容量的slice 执行append
-+ 预分度长度后， append稍强于copy
-+ 切片垃圾回收陷阱
-    + s = s[:len(s)-1]  删掉最后一个元素，最后一个元素没有gc, 
-    + s = ss[2:4]   s引用ss中一部分数据， ss其它数据不会gc
-    + </p>
+<ul>
+<li>在<strong>频繁变更长度的字符串操作</strong>中用预置长度的[]byte 代替string ，比如 字符串拼接</li>
+<li>尽量对有容量的slice 执行append</li>
+<li>预分度长度后， append稍强于copy</li>
+<li>切片垃圾回收陷阱<ul>
+<li>s = s[:len(s)-1]  删掉最后一个元素，最后一个元素没有gc, </li>
+<li>s = ss[2:4]   s引用ss中一部分数据， ss其它数据不会gc</li>
+</ul>
+</li>
+</ul>
+<h3 id="slice_3">slice 操作陷阱</h3>
+<ul>
+<li>slice 传递为参数时，如果发生扩容，那么底层会生成新数组， 导致不修改传入slice</li>
+</ul>
               
             </div>
           </div>
