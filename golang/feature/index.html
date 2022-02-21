@@ -200,6 +200,13 @@ const debug = false
 <p>go build -tags debug</p>
 <h2 id="_3">结构体嵌套</h2>
 <p>golang 大量结构体内嵌会使编译速度慢</p>
+<h2 id="golang">Golang 程序启动初化执行顺序</h2>
+<p><img alt="git work flow" src="../img/1.png" /></p>
+<blockquote>
+<blockquote>
+<p>main func执行前, 所有代码都运行在一个 goroutine, 如果init 开启了goroutine, 只有在进入了main.main 之后才开始执行 </p>
+</blockquote>
+</blockquote>
               
             </div>
           </div>
