@@ -12,4 +12,27 @@ defer 执行顺序与声明顺序相反
 panic 发生时, 中断后续执行，转而执行defer 函数
 所以recover函数只有在defer代码块中才会有效果
 
+### recover 有无法捕获panic 的风险， 比如二个goroutine 并发写同一个map
+~~~golang
+func foo() {
+	defer func() {
+		if e := recover(); e != nil {
+			fmt.Println("recover!", e)
+		}
+	}()
 
+	m := make(map[int]int)
+	go func() {
+		for {
+			m[0] = 0
+		}
+	}()
+	for {
+		fmt.Println("Panic:", m[0])
+	}
+}
+
+func main() {
+	foo()
+}
+~~~

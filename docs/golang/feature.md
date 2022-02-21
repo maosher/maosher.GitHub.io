@@ -39,3 +39,7 @@ go build -tags debug
 ## 结构体嵌套
 golang 大量结构体内嵌会使编译速度慢
 
+
+## Golang 程序启动初化执行顺序
+![git work flow](img/1.png)
+ >>main func执行前, 所有代码都运行在一个 goroutine, 如果init 开启了goroutine, 只有在进入了main.main 之后才开始执行 
