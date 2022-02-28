@@ -36,3 +36,15 @@ B进行了三次流量控制。第一次把窗口减少到 rwnd = 300 ，第二�
 TCP为每一个连接设有一个持续计时器(persistence timer)。只要TCP连接的一方收到对方的零窗口通知，就启动持续计时器。若持续计时器设置的时间到期，就发送一个零窗口控测报文段（携1字节的数据），那么收到这个报文段的一方就重新设置持续计时器。
 ![tcp](img/tcp_rwnd.png)
 
+## 调优
+
++ tcp 最大缓冲区大小
++ tcp 窗口
++ udp 窗口
++ syn 洪水攻击保护 
++ 内核放弃链接之前发送SYN+ACK包的数量 net.ipv4.tcp_synack_retries=3 //default = 2
++ 未收到ack的SYN队列的长度  net.ipv4.tcp_max_syn_backlog=81920 default = 128
++ 间隔多少秒发送1次keepalive探测包（默认值：7200）net.ipv4.tcp_keepalive_time = 300
+
+
+[Linux 网络调优：内核网络栈参数篇](https://www.starduster.me/2020/03/02/linux-network-tuning-kernel-parameter/)  
