@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://maosher.github.io/golang/experience/">
+  <link rel="canonical" href="https://maosher.github.io/golang/cgo/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Project Experience - My Read Note</title>
+  <title>cgo - My Read Note</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Project Experience";
-    var mkdocs_page_input_path = "golang\\experience.md";
-    var mkdocs_page_url = "/golang/experience/";
+    var mkdocs_page_name = "cgo";
+    var mkdocs_page_input_path = "golang\\cgo.md";
+    var mkdocs_page_url = "/golang/cgo/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -62,7 +62,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Golang</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../goroutine/">Goroutine</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../defer/">Defer</a>
@@ -73,33 +73,7 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../slice/">Slice & Array</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Project Experience</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_1">如何获取一个字符串的字符数：</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#golang-with-lua">Golang with Lua</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_2">性能优化</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#_3">字符串拼接</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_4">反射性能问题</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#syncpool">sync.Pool 对象池</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_5">逃逸性能问题</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#for-range">for range</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#synconce">利用sync.Once</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#go18-plugin">go1.8动态库 plugin</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#chan">使用chan 来限制并发数</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../experience/">Project Experience</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Algorithm</span></p>
@@ -171,12 +145,8 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Golang &raquo;</li>
-        
-      
     
-    <li>Project Experience</li>
+    <li>cgo</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -188,80 +158,27 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="some-experience">Some Experience</h1>
-<h2 id="_1">如何获取一个字符串的字符数：</h2>
-<p>utf8.RuneCountInString(str)</p>
-<h2 id="golang-with-lua">Golang with Lua</h2>
-<p>GopherLua  CGo</p>
-<h2 id="_2">性能优化</h2>
-<h3 id="_3">字符串拼接</h3>
-<p>使用[]byte 替代 string + </p>
-<h3 id="_4">反射性能问题</h3>
-<ul>
-<li>返回创建对象耗时约为new 的1.5倍  </li>
-<li>普通直接给字段，和通过反射 下标，名称找到对应字段赋值 性能差异巨大 1:100:1000, 可以将名称和对应下标缓冲起来，优化近似下标的效率</li>
-</ul>
-<h3 id="syncpool">sync.Pool 对象池</h3>
-<h3 id="_5">逃逸性能问题</h3>
-<ul>
-<li>指针逃逸</li>
-<li>interface{} 动态类型逃逸</li>
-<li>内存超过一定大小（栈大小影响)，发生逃逸， make([]int, 8191) 不逃逸， make([]int, 8192) ， make([]int n)逃逸</li>
-</ul>
-<h3 id="for-range">for range</h3>
-<p>如果是复杂类型， range 拷贝有性能问题</p>
-<pre><code class="language-golang">for k, v := range kvs {
-    // v is copy
-}
-</code></pre>
-<h3 id="synconce">利用sync.Once</h3>
-<p>sync.Once 在使用时才触发， 部分场景下可以代替 init function中一些初始化， 如果未使用到，可以提升一些效率</p>
-<h2 id="go18-plugin">go1.8动态库 plugin</h2>
-<p>go build -buildmode=plugin</p>
-<pre><code class="language-golang">pdll, err := plugin.Open(&quot;test.so&quot;)
-if err != nil {
-    //...
-    return 
-}
-//获取动态库方法
-fun, err := pdll.Lookup(&quot;TestFunc&quot;)
-if err != nil {
-        //...
-        return
-}
+                <h1 id="cgo">cgo</h1>
+<h2 id="_1"></h2>
+<h2 id="use-lua-in-cgo">use lua in cgo</h2>
+<pre><code>/*
+#cgo LDFLAGS: -L/usr/local/lib -llua -ldl -lm
 
-</code></pre>
-<h2 id="chan">使用chan 来限制并发数</h2>
-<pre><code class="language-golang">var sem = make(chan int, 1000)
-func handle(r *Request) {
-    //do something , will cost lot time
-    &lt;-sem
-}
-func Server(queue chan *Request) {
-    for {
-        sem &lt;- 1
-        request := &lt;-queue
-        go handle(request)
-    }
-}
-func main() {
-    queue := make(chan *Request)
-    go Server(queue)
-}
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+#include &quot;lua.h&quot;
+#include &quot;lualib.h&quot;
+#include &quot;luaxlib.h&quot;
+
+
+*/
+import &quot;C&quot;
+
 </code></pre>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../../al/tree/" class="btn btn-neutral float-right" title="Tree">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../slice/" class="btn btn-neutral" title="Slice & Array"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -285,10 +202,6 @@ func main() {
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../slice/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../../al/tree/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

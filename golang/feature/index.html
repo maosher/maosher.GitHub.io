@@ -199,7 +199,8 @@ const debug = false
 </code></pre>
 <p>go build -tags debug</p>
 <h2 id="_3">结构体嵌套</h2>
-<p>golang 大量结构体内嵌会使编译速度慢</p>
+<p>golang 大量结构体内嵌会使编译速度慢<br />
+下划线开头的文件名会被go 编译忽略  _noused.go</p>
 <h2 id="golang">Golang 程序启动初化执行顺序</h2>
 <p><img alt="git work flow" src="../img/1.png" /></p>
 <blockquote>
@@ -207,6 +208,13 @@ const debug = false
 <p>main func执行前, 所有代码都运行在一个 goroutine, 如果init 开启了goroutine, 只有在进入了main.main 之后才开始执行 </p>
 </blockquote>
 </blockquote>
+<h2 id="_4">常见坑</h2>
+<h3 id="_5">可变参数是空接口类型</h3>
+<p>传入空接口的切片时需要注意参数展开的问题</p>
+<pre><code class="language-golang">var a = []interface{}{1, 2, 3}
+fmt.Println(a)  //[1 2 3]
+fmt.Println(a...) //1 2 3
+</code></pre>
               
             </div>
           </div>
