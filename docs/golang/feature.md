@@ -47,3 +47,14 @@ golang 大量结构体内嵌会使编译速度慢
  >>main func执行前, 所有代码都运行在一个 goroutine, 如果init 开启了goroutine, 只有在进入了main.main 之后才开始执行 
 
  
+
+## 常见坑
+
+### 可变参数是空接口类型
+
+传入空接口的切片时需要注意参数展开的问题
+~~~golang
+var a = []interface{}{1, 2, 3}
+fmt.Println(a)  //[1 2 3]
+fmt.Println(a...) //1 2 3
+~~~
