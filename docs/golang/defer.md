@@ -7,6 +7,26 @@
 defer执行按倒序
 defer 在*1.4.2*版本之前会有效率问题
 defer 执行顺序与声明顺序相反
+~~~golang
+func f(n int) (r int) {
+	defer func() {
+		r += n
+		recover()
+	}()
+
+	var f func()
+
+	defer f()
+	f = func() {
+		r += 2
+	}
+	return n + 1
+}
+
+func main() {
+	fmt.Println(f(3))
+}
+~~~
 
 ## panic
 panic 发生时, 中断后续执行，转而执行defer 函数
