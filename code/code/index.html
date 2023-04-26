@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://maosher.github.io/golang/defer/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://maosher.github.io/code/code/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Defer - My Read Note</title>
+    <title>一个游戏服务器设计 - My Read Note</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Defer";
-        var mkdocs_page_input_path = "golang\\defer.md";
-        var mkdocs_page_url = "/golang/defer/";
+        var mkdocs_page_name = "\u4e00\u4e2a\u6e38\u620f\u670d\u52a1\u5668\u8bbe\u8ba1";
+        var mkdocs_page_input_path = "code\\code.md";
+        var mkdocs_page_url = "/code/code/";
       </script>
     
     <script src="../../js/jquery-3.6.0.min.js" defer></script>
@@ -56,28 +56,18 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Golang</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../goroutine/">Goroutine</a>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../golang/goroutine/">Goroutine</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Defer</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#defer">defer</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#panic">panic</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#recover-panic-goroutine-map">recover 有无法捕获panic 的风险， 比如二个goroutine 并发写同一个map</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../golang/defer/">Defer</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../gc/">GC</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../golang/gc/">GC</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../feature/">Feature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../golang/feature/">Feature</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../slice/">Slice & Array</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../golang/slice/">Slice & Array</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../experience/">Project Experience</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../golang/experience/">Project Experience</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Algorithm</span></p>
@@ -143,8 +133,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Golang &raquo;</li>
-      <li>Defer</li>
+      <li>一个游戏服务器设计</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -153,65 +142,86 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="defer-panic">defer 和 panic</h1>
-<hr />
-<h2 id="defer">defer</h2>
-<p><strong>defer</strong> 执行晚于return , 可以操作命名返回值
-defer执行按倒序
-defer 在<em>1.4.2</em>版本之前会有效率问题
-defer 执行顺序与声明顺序相反</p>
-<pre><code class="language-golang">func f(n int) (r int) {
-    defer func() {
-        r += n
-        recover()
-    }()
-
-    var f func()
-
-    defer f()
-    f = func() {
-        r += 2
-    }
-    return n + 1
+                <h1 id="_1">一个游戏服务器设计</h1>
+<h2 id="_2">特点</h2>
+<ul>
+<li>玩家数量大，滚服，频繁开新服</li>
+<li>战斗，对局开房间式的</li>
+</ul>
+<h2 id="_3">横向划分</h2>
+<p>基于服务，每个服务里面的业务处理是单线程的
+如果单线程里不能满足业务需求，那么可以采用多服务的模式</p>
+<p><strong><em>不要通过共享内存来通信，要通过通信来共享内存</em></strong></p>
+<p>服务的设计</p>
+<pre><code class="language-golang">func (sc* Service) Init() {
+    go sc.ioLoop()
+    go sc.RunLoop() //简单代码， 没考虑停止/退出时情况
 }
-
-func main() {
-    fmt.Println(f(3))
+func (sc* Service) PostMsg(msg interface{}){
+    //简单代码， 没考虑停止/退出时情况
+    sc.queue &lt;- msg
 }
-</code></pre>
-<h2 id="panic">panic</h2>
-<p>panic 发生时, 中断后续执行，转而执行defer 函数
-所以recover函数只有在defer代码块中才会有效果</p>
-<h3 id="recover-panic-goroutine-map">recover 有无法捕获panic 的风险， 比如二个goroutine 并发写同一个map</h3>
-<pre><code class="language-golang">func foo() {
-    defer func() {
-        if e := recover(); e != nil {
-            fmt.Println(&quot;recover!&quot;, e)
-        }
-    }()
+func (sc* Service) ioLoop() {
 
-    m := make(map[int]int)
-    go func() {
-        for {
-            m[0] = 0
+}
+func (sc* Service) runLoop(){
+    defer sc.exitLoop()
+    for msg := range sc.queue {
+        switch msg.(type){
+            case *MsgStop:
+                return 
+            default:
+                sc.ProcessMsg(msg)  
         }
-    }()
-    for {
-        fmt.Println(&quot;Panic:&quot;, m[0])
     }
 }
+func (sc* Service) ProcessMsg(msg){
+    switch msg.(type) {
+        case *MsgTimer: 
+        //msg.TimerFunc(sc, msg.param...)
+        case *MsgNetPacket:
+        // some logic code
+        // processNetMsg(msg)        
+             sc.mgr.GetNetService().PostMsg(&amp;NetMsgMsg{ Head:head })
 
-func main() {
-    foo()
+    }
 }
 </code></pre>
+<h3 id="_4">消息队列</h3>
+<h3 id="_5">网络服务</h3>
+<h3 id="_6">逻辑服务</h3>
+<h3 id="httpd-grpc-http">Httpd / grpc, http 服务</h3>
+<h3 id="_7">生态日志</h3>
+<h3 id="_8"></h3>
+<h2 id="_9">纵向划分</h2>
+<h3 id="_10">服务发现</h3>
+<h3 id="gateway">Gateway 接入</h3>
+<ul>
+<li>负责维护连接，消息分发</li>
+<li>收敛网络入口</li>
+<li>动态切换后端服务</li>
+</ul>
+<h3 id="_11">登录</h3>
+<h3 id="_12">主逻辑</h3>
+<ul>
+<li>主要玩法(养成，任务，活动...)</li>
+<li>给服务提供基础数据</li>
+</ul>
+<h3 id="_13">战斗/房间 服务</h3>
+<ul>
+<li>负责核心战斗</li>
+<li>维护房间，玩家状态</li>
+</ul>
+<h3 id="_14">数据存储</h3>
+<ul>
+<li>解耦业务层数据结构</li>
+<li>适应数据库改变</li>
+</ul>
+<h3 id="gm">GM, 匹配，社交其它服务</h3>
+<h2 id="-">- 辅助性</h2>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../goroutine/" class="btn btn-neutral float-left" title="Goroutine"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../gc/" class="btn btn-neutral float-right" title="GC">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -233,10 +243,6 @@ func main() {
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../goroutine/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../gc/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
