@@ -1,56 +1,62 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://maosher.github.io/cpp/cpp11/" />
-      <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>C++11 - My Read Note</title>
-    <link rel="stylesheet" href="../../css/theme.css" />
-    <link rel="stylesheet" href="../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "C++11";
-        var mkdocs_page_input_path = "cpp\\cpp11.md";
-        var mkdocs_page_url = "/cpp/cpp11/";
-      </script>
-    
-    <script src="../../js/jquery-3.6.0.min.js" defer></script>
-    <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://maosher.github.io/cpp/cpp11/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>C++11 - My Read Note</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "C++11";
+    var mkdocs_page_input_path = "cpp\\cpp11.md";
+    var mkdocs_page_url = "/cpp/cpp11/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
+
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> My Read Note
-        </a><div role="search">
+        <a href="../.." class="icon icon-home"> My Read Note</a>
+        <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../git/">Git</a>
-                </li>
-              </ul>
-              <p class="caption"><span class="caption-text">C++</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">C++11</a>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../git/">Git</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C++</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">C++11</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#shared_ptr-weak_ptr-unique_ptr">shared_ptr &amp; weak_ptr &amp; unique_ptr</a>
         <ul>
@@ -64,102 +70,117 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#stdmove">std::move</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#stdforward">std::forward</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#stdbind-stdfunction">std::bind &amp; std::function</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#lambda">lambda</a>
     </li>
     </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../knowledge/">Knowledge Point</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Golang</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../golang/goroutine/">Goroutine</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../golang/defer/">Defer</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../golang/gc/">GC</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../golang/feature/">Feature</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../golang/slice/">Slice & Array</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../golang/experience/">Project Experience</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Algorithm</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../al/tree/">Tree</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../al/code/">Code</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../al/skiplist/">SkipList</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Network & OS</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../no/tools/">Tools</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../no/tcp/">Tcp</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../no/shell/">Linux shell</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../no/memory/">Memory</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Database</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../db/mysql/">Mysql</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../db/kv/">KV</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../db/mongodb/">MongoDb</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">ThirdParty</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../third_party/mq/">MessageQueue</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Game Design</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../game/framework/">Framework</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../game/map/">Map</a>
-                  </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../links/">Links</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
-                </li>
-              </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../knowledge/">Knowledge Point</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Golang</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/goroutine/">Goroutine</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/defer/">Defer</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/gc/">GC</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/feature/">Feature</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/slice/">Slice & Array</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/experience/">Project Experience</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Algorithm</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../al/tree/">Tree</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../al/code/">Code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../al/skiplist/">SkipList</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Network & OS</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/tools/">Tools</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/tcp/">Tcp</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/shell/">Linux shell</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../os/memory/">Memory</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Database</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../db/mysql/">Mysql</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../db/kv/">KV</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../db/mongodb/">MongoDb</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">ThirdParty</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../third_party/mq/">MessageQueue</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Game Design</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../game/framework/">Framework</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../game/map/">Map</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../links/">Links</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                    </li>
+                </ul>
       </div>
     </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">My Read Note</a>
-        
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">My Read Note</a>
       </nav>
+
+      
       <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
           <li>C++ &raquo;</li>
-      <li>C++11</li>
+        
+      
+    
+    <li>C++11</li>
     <li class="wy-breadcrumbs-aside">
+      
     </li>
   </ul>
+  
   <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+
+          <div role="main">
+            <div class="section">
               
                 <h1 id="c11">C++11</h1>
 <h2 id="shared_ptr-weak_ptr-unique_ptr">shared_ptr &amp; weak_ptr &amp; unique_ptr</h2>
@@ -185,37 +206,68 @@ int a; // a 为左值<br />
 a = 3; // 3 为右值<br />
 int&amp;&amp; i = 123;<br />
 int&amp;&amp; j = std::move(i);<br />
-int&amp;&amp; k = i;//编译不过，这里i是一个左值，右值引用只能引用右值<br />
-左值是可寻址的变量，有持久性；<br />
-右值一般是不可寻址的常量，或在表达式求值过程中创建的无名临时对象，短暂性的。 <br />
+int&amp;&amp; k = i;//编译不过，这里i是一个左值，右值引用只能引用右值  </p>
+<blockquote>
+<p>左值是可寻址的变量，有持久性；<br />
+右值一般是不可寻址的常量，或在表达式求值过程中创建的无名临时对象，短暂性的。 
 左值和右值主要的区别之一是左值可以被修改，而右值不能</p>
+</blockquote>
 <p>要实现转移语义，需要定义转移构造函数，还可以定义转移赋值操作符。对于右值的拷贝和赋值会调用转移构造函数和转移赋值操作符。如果转移构造函数和转移拷贝操作符没有定义，那么就遵循现有的机制，拷贝构造函数和赋值操作符会被调用。</p>
+<h2 id="stdforward">std::forward</h2>
 <h2 id="stdbind-stdfunction">std::bind &amp; std::function</h2>
 <p>std::function 是一个可调用对象包装器，是一个类模板，可以容纳除了类成员函数指针之外的所有可调用对象，它可以用统一的方式处理函数、函数对象、函数指针，并允许保存和延迟它们的执行。</p>
 <p>定义格式：std::function&lt;函数类型&gt;。</p>
 <p>std::function可以取代函数指针的作用，因为它可以延迟函数的执行，特别适合作为回调函数使用。</p>
 <p>std::bind函数看作一个通用的函数适配器，它接受一个可调用对象，生成一个新的可调用对象来“适应”原对象的参数列表。</p>
 <p>std::bind将可调用对象与其参数一起进行绑定，绑定后的结果可以使用std::function保存。std::bind主要有以下两个作用：</p>
-<p>将可调用对象和其参数绑定成一个防函数；
+<p>将可调用对象和其参数绑定成一个仿函数；
 只绑定部分参数，减少可调用对象传入的参数</p>
+<p>std::placeholders </p>
 <h2 id="lambda">lambda</h2>
+<p><strong> <a href="参数">捕捉列表</a>mutable—&gt;返回值类型{ 函数体 } </strong>  </p>
+<ul>
+<li>
+<p>[捕捉列表]：该列表总是出现在lambda表达式的起始位置，编译器根据[]来判断接下来的代码是否为lambda表达式，捕捉列表能够捕捉当前作用域中的变量，供lambda函数使用。    </p>
+<blockquote>
+<p>[val]：表示以传值方式捕捉变量val  <br />
+[=]：表示以传值方式捕捉当前作用域中的变量，包括this指针。<br />
+[&amp;val]：表示以引用方式传递捕捉变量val。<br />
+[&amp;]：表示以引用方式传递捕捉当前作用域中的所有变量，包括this指针。<br />
+[this]：表示以传值方式捕捉当前的this指针。  </p>
+</blockquote>
+</li>
+<li>
+<p>(参数)：参数列表。与普通函数参数列表使用相同。如果不需要传递参数，可以连同"()"一起省略。</p>
+</li>
+<li>mutable：默认情况下，lambda函数总是一个const函数，捕捉的传值参数具有常性，mutable可以取消常性。使用mutable修饰符时，参数列表不能省略，即使参数为空。</li>
+<li>—&gt;返回值类型：返回值类型。使用追踪返回类型形式声明函数的返回值类型，没有返回值此部分可省略。返回值类型明确的情况下，也可省略，由编译器推导。</li>
+<li>{函数体}：在函数体内除了可以使用参数外，还能使用捕捉的变量。</li>
+</ul>
               
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../git/" class="btn btn-neutral float-left" title="Git"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
         <a href="../knowledge/" class="btn btn-neutral float-right" title="Knowledge Point">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../git/" class="btn btn-neutral" title="Git"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
+    
   </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-          
+      
         </div>
       </div>
 
@@ -223,7 +275,7 @@ int&amp;&amp; k = i;//编译不过，这里i是一个左值，右值引用只能
 
   </div>
 
-  <div class="rst-versions" role="note" aria-label="Versions">
+  <div class="rst-versions" role="note" aria-label="versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
