@@ -22,6 +22,7 @@ func makemap(t *maptype, hint int64, h *hmap, bucket unsafe.Pointer) *hmap {
 + 每个编译选项由逗号分隔的条件项以逻辑"与"的关系组成
 + 每个条件项的名字用字母+数字表示，在前面加!表示否定的意思
 + 条件编译说明和package 中的空行 (go vet 可以检测出来这个错误)
++ 下划线开头的文件名会被go 编译忽略  _noused.go
 ~~~golang
 // debug.go
 // +build debug
@@ -37,13 +38,9 @@ const debug = false
 go build -tags debug
 
 
-## 结构体嵌套
-golang 大量结构体内嵌会使编译速度慢  
-下划线开头的文件名会被go 编译忽略  _noused.go
-
 
 ## Golang 程序启动初化执行顺序
-![git work flow](img/1.png)
+![go init](img/1.png)
  >>main func执行前, 所有代码都运行在一个 goroutine, 如果init 开启了goroutine, 只有在进入了main.main 之后才开始执行 
 
  

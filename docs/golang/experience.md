@@ -9,8 +9,12 @@ GopherLua  CGo
 
 ## 性能优化
 
+### 结构体嵌套
+golang 大量结构体内嵌会使编译速度慢  
 ### 字符串拼接
-使用[]byte 替代 string + 
+使用[]byte 替代 string +   
+bytes.Buffer 效率大于 string+  
+strconvFormat, strings.Builder 效率大于 fmt.Sprintf  
 ### 反射性能问题
 + 返回创建对象耗时约为new 的1.5倍  
 + 普通直接给字段，和通过反射 下标，名称找到对应字段赋值 性能差异巨大 1:100:1000, 可以将名称和对应下标缓冲起来，优化近似下标的效率

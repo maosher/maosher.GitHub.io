@@ -18,10 +18,10 @@ nav:
         - Code : al\code.md
         - SkipList : al\skiplist.md
     - Network & OS :
-        - Tools : no\tools.md
-        - Tcp : no\tcp.md
-        - Linux shell : no\shell.md
-        - Memory : no\memory.md
+        - Tools : os\tools.md
+        - Tcp : os\tcp.md
+        - Linux shell : os\shell.md
+        - Memory : os\memory.md
     - Database :    
         - Mysql : db\mysql.md
         - KV : db\kv.md
