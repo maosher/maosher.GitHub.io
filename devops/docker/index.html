@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://maosher.github.io/golang/goroutine/">
+  <link rel="canonical" href="https://maosher.github.io/devops/docker/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Goroutine - My Read Note</title>
+  <title>Docker - My Read Note</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Goroutine";
-    var mkdocs_page_input_path = "golang\\goroutine.md";
-    var mkdocs_page_url = "/golang/goroutine/";
+    var mkdocs_page_name = "Docker";
+    var mkdocs_page_input_path = "devops\\docker.md";
+    var mkdocs_page_url = "/devops/docker/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -62,20 +62,18 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Golang</span></p>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Goroutine</a>
-    <ul class="current">
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/goroutine/">Goroutine</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../defer/">Defer</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/defer/">Defer</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../gc/">GC</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/gc/">GC</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../feature/">Feature</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/feature/">Feature</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../slice/">Slice & Array</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/slice/">Slice & Array</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../experience/">Project Experience</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/experience/">Project Experience</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Algorithm</span></p>
@@ -147,12 +145,8 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Golang &raquo;</li>
-        
-      
     
-    <li>Goroutine</li>
+    <li>Docker</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -164,46 +158,44 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="gmp">GMP</h1>
-<p>G:表示goroutine，每个goroutine都有自己的栈空间，定时器，初始化的栈空间在2k左右，空间会随着需求增长。</p>
-<p>M:抽象化代表内核线程，记录内核线程栈信息，当goroutine调度到线程时，使用该goroutine自己的栈信息。</p>
-<p>P:代表调度器，负责调度goroutine，维护一个本地goroutine队列，M从P上获得goroutine并执行，同时还负责部分内存的管理。
-* 全局队列（Global Queue）：存放等待运行的 G。<br />
-<em> P 的本地队列：同全局队列类似，存放的也是等待运行的 G，存的数量有限，不超过 256 个。新建 G’时，G’优先加入到 P 的本地队列，如果队列满了，则会把本地队</em>列中一半的 G 移动到全局队列。<br />
-<em> P 列表：所有的 P 都在程序启动时创建，并保存在数组中，最多有 GOMAXPROCS(可配置) 个。  <br />
-</em> M：线程想运行任务就得获取 P，从 P 的本地队列获取 G，P 队列为空时，M 也会尝试从全局队列拿一批 G 放到 P 的本地队列，或从其他 P 的本地队列偷一半放到自己 P 的本地队列。M 运行 G，G 执行之后，M 会从 P 获取下一个 G，不断重复下去。  </p>
-<ul>
-<li>M 与 P 是 1：1 的关系
-<img alt="git work flow" src="../imgs/2.png" /></li>
-</ul>
-<h1 id="go-func">go func 调度过程</h1>
-<p><img alt="" src="../imgs/goroutine2023-09-05-22-13-24.png" /></p>
-<h2 id="_1">工具</h2>
-<p>go tool trace</p>
-<h1 id="chan">chan</h1>
-<h2 id="_2">异常</h2>
-<p>如果给一个 nil 的 channel 发送数据，会造成永远阻塞。
-如果从一个 nil 的 channel 中接收数据，也会造成永久阻塞。
-给一个已经关闭的 channel 发送数据， 会引起 panic
-从一个已经关闭的 channel 接收数据， 如果缓冲区中为空，则返回一个零
-值。</p>
-<h2 id="_3">底层结构</h2>
-<p>使用了 ring buffer（环形缓冲区) 来缓存写入的数据。</p>
-<h3 id="_4">终止一个协程</h3>
-<p>runtime.Goexit()</p>
+                <h1 id="docker">Docker</h1>
+<h2 id="_1">题记</h2>
+<p>这二天闲的无事，折腾一下我的笔记本，本来先打算装个linux 环境。
+研究了vagrant , virtualbox, WSL ，最后决定研究下docker。
+然后发现有个Docker Destop, 先把它装了再说。
+安装时查看了下系统需求， 好险，我的系统版本刚好达到。
+需要升级WSL
+<img alt="" src="../imgs/docker2023-08-16-11-22-17.png" /></p>
+<p>运行docker Desktop 成功了</p>
+<h2 id="_2">课程笔记</h2>
+<p>解决了什么问题
+开发和运行环境不一致</p>
+<p>仓库名，TAG 都是<none> 的镜像， 叫作虚悬镜像</p>
+<h2 id="_3">基本概念</h2>
+<p>Image 镜像
+Container 容器
+Repository 仓库 hub.docker.com</p>
+<p>client - server 架构 
+client 发命令给server ， server守护进程执行命令</p>
+<h2 id="_4">命令</h2>
+<p>docker images 
+docker search 
+docker pull
+docker ps -a
+docker run -it ubuntu /bin/bash 
+docker run -d ubuntu 
+ctrl + p + q
+docker start | stop | restart 
+docker attach 
+docker exec -it 
+docker container prune 移除所有未运行容器
+docker build </p>
+<p>docker top 
+docker inspect </p>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../defer/" class="btn btn-neutral float-right" title="Defer">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../../cpp/knowledge/" class="btn btn-neutral" title="Knowledge Point"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -227,10 +219,6 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../cpp/knowledge/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../defer/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
