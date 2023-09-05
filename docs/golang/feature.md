@@ -40,7 +40,7 @@ go build -tags debug
 
 
 ## Golang 程序启动初化执行顺序
-![go init](img/1.png)
+![go init](imgs/1.png)
  >>main func执行前, 所有代码都运行在一个 goroutine, 如果init 开启了goroutine, 只有在进入了main.main 之后才开始执行 
 
  
