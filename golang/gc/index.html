@@ -69,6 +69,22 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">GC</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">变更历史</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">最新版本</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">清理终止阶段</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">标记阶段</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">标记终止阶段</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">清理阶段</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">优化</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../feature/">Feature</a>
@@ -165,15 +181,44 @@
             <div class="section">
               
                 <h1 id="gc">GC</h1>
-<p>1、Mark: 包含两部分:
-a、Mark Prepare: 初始化GC任务，包括开启写屏障(write barrier)和辅助GC(mutator assist)，统计root对象的任务数量等。这个过程需要STW
-b、GC Drains: 扫描所有root对象，包括全局指针和goroutine(G)栈上的指针（扫描对应G栈时需停止该G)，将其加入标记队列(灰色队列)，并循环处理灰色队列的对象，直到灰色队列为空。该过程后台并行执行
-2、Mark Termination: 完成标记工作，重新扫描(re-scan)全局指针和栈。因为Mark和用户程序是并行的，所以在Mark过程中可能会有新的对象分配和指针赋值，这个时候就需要通过写屏障（write barrier）记录下来，re-scan 再检查一下。这个过程也是会STW的。
-3、Sweep: 按照标记结果回收所有的白色对象，该过程后台并行执行
-4、Sweep Termination: 对未清扫的span进行清扫, 只有上一轮的GC的清扫工作完成才可以开始新一轮的GC。
-————————————————
-版权声明：本文为CSDN博主「冰释物语」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/bingshiwuyu/article/details/107383186</p>
+<h2 id="_1">变更历史</h2>
+<p>v1.0 — 完全串行的标记和清除过程，需要暂停整个程序；<br />
+v1.1 — 在多核主机并行执行垃圾收集的标记和清除阶段；<br />
+v1.3 — 运行时基于只有指针类型的值包含指针的假设增加了对栈内存的精确扫描支持，实现了真正精确的垃圾收集；将 unsafe.Pointer 类型转换成整数类型的值认定为不合法的，可能会造成悬挂指针等严重问题；<br />
+v1.5 — 实现了基于三色标记清扫的并发垃圾收集器；大幅度降低垃圾收集的延迟从几百 ms 降低至 10ms 以下；计算垃圾收集启动的合适时间并通过并发加速垃圾收集的过程；<br />
+v1.6 — 实现了去中心化的垃圾收集协调器；基于显式的状态机使得任意 Goroutine 都能触发垃圾收集的状态迁移；使用密集的位图替代空闲链表表示的堆内存，降低清除阶段的 CPU 占用；<br />
+v1.7 — 通过并行栈收缩将垃圾收集的时间缩短至 2ms 以内；<br />
+v1.8 — 使用混合写屏障将垃圾收集的时间缩短至 0.5ms 以内  </p>
+<h2 id="_2">最新版本</h2>
+<ol>
+<li>Mark: 包含两部分:<br />
+  a. Mark Prepare: 初始化GC任务，包括开启写屏障(write barrier)和辅助GC(mutator assist)，统计root对象的任务数量等。这个过程需要STW<br />
+  b. GC Drains: 扫描所有root对象，包括全局指针和goroutine(G)栈上的指针（扫描对应G栈时需停止该G)，将其加入标记队列(灰色队列)，并循环处理灰色队列的对象，直到灰色队列为空。该过程后台并行执行  </li>
+<li>Mark Termination: 完成标记工作，重新扫描(re-scan)全局指针和栈。因为Mark和用户程序是并行的，所以在Mark过程中可能会有新的对象分配和指针赋值，这个时候就需要通过写屏障（write barrier）记录下来，re-scan 再检查一下。这个过程也是会STW的。  </li>
+<li>Sweep: 按照标记结果回收所有的白色对象，该过程后台并行执行  </li>
+<li>Sweep Termination: 对未清扫的span进行清扫, 只有上一轮的GC的清扫工作完成才可以开始新一轮的GC。  </li>
+</ol>
+<h3 id="_3">清理终止阶段</h3>
+<p>暂停程序，所有的处理器在这时会进入安全点（Safe point）；
+如果当前垃圾收集循环是强制触发的，我们还需要处理还未被清理的内存管理单元；</p>
+<h3 id="_4">标记阶段</h3>
+<p>将状态切换至 _GCmark、开启写屏障、用户程序协助（Mutator Assists）并将根对象入队；
+恢复执行程序，标记进程和用于协助的用户程序会开始并发标记内存中的对象，写屏障会将被覆盖的指针和新指针都标记成灰色，而所有新创建的对象都会被直接标记成黑色；
+开始扫描根对象，包括所有 Goroutine 的栈、全局对象以及不在堆中的运行时数据结构，扫描 Goroutine 栈期间会暂停当前处理器；
+依次处理灰色队列中的对象，将对象标记成黑色并将它们指向的对象标记成灰色；
+使用分布式的终止算法检查剩余的工作，发现标记阶段完成后进入标记终止阶段；</p>
+<h3 id="_5">标记终止阶段</h3>
+<p>暂停程序、将状态切换至 _GCmarktermination 并关闭辅助标记的用户程序；
+清理处理器上的线程缓存；</p>
+<h3 id="_6">清理阶段</h3>
+<p>将状态切换至 _GCoff 开始清理阶段，初始化清理状态并关闭写屏障；
+恢复用户程序，所有新创建的对象会标记成白色；
+后台并发清理所有的内存管理单元，当 Goroutine 申请新的内存管理单元时就会触发清理；</p>
+<h2 id="_7">优化</h2>
+<ol>
+<li>MADV_FREE 1.16前版本， 系统按需求决定是否回收</li>
+<li>字符串拼接</li>
+</ol>
               
             </div>
           </div>
