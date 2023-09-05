@@ -14,6 +14,8 @@ P:代表调度器，负责调度goroutine，维护一个本地goroutine队列，
 
 # go func 调度过程
 ![](imgs/goroutine2023-09-05-22-13-24.png)
+![](imgs/goroutine2023-09-05-22-38-22.png)
+
 ## 工具
 go tool trace
 
