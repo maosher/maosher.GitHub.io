@@ -13,6 +13,7 @@ nav:
         - Feature : golang\feature.md
         - Slice & Array : golang\slice.md
         - Project Experience : golang\experience.md
+        - Think About : golang\about.md
     - Algorithm :
         - Tree : al\tree.md   
         - Code : al\code.md
