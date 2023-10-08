@@ -77,6 +77,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../golang/experience/">Project Experience</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/about/">Think About</a>
+                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Algorithm</span></p>
                 <ul>
@@ -174,6 +176,12 @@ inline函数是函数，但在编译时不单独产生代码，而是将代码�
 2） 如果相邻位域字段的类型相同，但其位宽之和大于类型的 sizeof 大小，则后面的字段将从新的存储单元开始，其偏移量为其类型大小的整数倍；<br />
 3） 如果相邻的位域字段的类型不同，则各编译器的具体实现有差异， VC6 采取不压缩方式（不同位域字段存放在不同的位域类型字节中）， Dev-C++ 和 GCC 都采取压缩方式； 
 4） 如果位域字段之间穿插着非位域字段，则不进行压缩。</p>
+<h1 id="_2">内存泄露</h1>
+<h2 id="_3">编译器选项</h2>
+<p>ASAN</p>
+<p>## 三方工具
+Valgrind</p>
+<h2 id="_4">手动检测</h2>
               
             </div>
           </div>

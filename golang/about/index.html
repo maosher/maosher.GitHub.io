@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://maosher.github.io/third_party/etcd_zookeeper/">
+  <link rel="canonical" href="https://maosher.github.io/golang/about/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Etcd 和 Zookeeper - My Read Note</title>
+  <title>Think About - My Read Note</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Etcd \u548c Zookeeper";
-    var mkdocs_page_input_path = "third_party\\etcd_zookeeper.md";
-    var mkdocs_page_url = "/third_party/etcd_zookeeper/";
+    var mkdocs_page_name = "Think About";
+    var mkdocs_page_input_path = "golang\\about.md";
+    var mkdocs_page_url = "/golang/about/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -62,20 +62,26 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Golang</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/goroutine/">Goroutine</a>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../goroutine/">Goroutine</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/defer/">Defer</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../defer/">Defer</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/gc/">GC</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../gc/">GC</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/feature/">Feature</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../feature/">Feature</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/slice/">Slice & Array</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../slice/">Slice & Array</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/experience/">Project Experience</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../experience/">Project Experience</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/about/">Think About</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Think About</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#golang-c">golang 带来了什么？ 或者和c++不同之处</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">垃圾回收是个问题吗？</a>
+    </li>
+    </ul>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Algorithm</span></p>
@@ -109,7 +115,7 @@
                 </ul>
                 <p class="caption"><span class="caption-text">ThirdParty</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../mq/">MessageQueue</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../third_party/mq/">MessageQueue</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Game Design</span></p>
@@ -147,8 +153,12 @@
     <li><a href="../..">Docs</a> &raquo;</li>
     
       
+        
+          <li>Golang &raquo;</li>
+        
+      
     
-    <li>Etcd 和 Zookeeper</li>
+    <li>Think About</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -160,16 +170,27 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="etcd-zookeeper">Etcd 和 Zookeeper</h1>
-<p>更轻量级(Etcd基于GO语言开发,Zookeeper基于Java开发)<br />
-高负载下的稳定读写<br />
-数据模型的多版本并发控制<br />
-稳定的watcher功能，通知订阅者监听值的变化(Zookeeper基于数据的监听是一次性的，每次监听完成还需重新注册)<br />
-客户端协议使用GRPC协议，支持语言更广泛  </p>
+                <h1 id="_1">思考</h1>
+<h2 id="golang-c">golang 带来了什么？ 或者和c++不同之处</h2>
+<p>可以用“高产”二字来概括<br />
+多核的利用优势? 其它语言也可以实现
+编译优势，优秀的包管理  </p>
+<h2 id="_2">垃圾回收是个问题吗？</h2>
+<p>Go可以让你深入到内存布局，你可以分配自己的空间，如果你想的话可以自己做内存管理。虽然没有alloc和free方法，但是你可以声明一个缓存把东西放进去，这个技巧可用来避免产生不必要的垃圾。就像在C语言一样，在C里，如果你老是malloc和free，代价很大。因此，你分配一个对象数组并把它们链接在一起，形成一个链表，管理你自己的空间，而且还不用malloc和free，那么速度会很快。你可以做与Go所做相同的事情，因为Go赋予你与底层事物安全打交道的能力，因此不用欺骗类型系统来达到目的，你实际上可以自己来做。</p>
+<p>前面我表达了这样的观点，在Java里，无论何时你在结构里嵌入其它东西，都是通过指针来实现的，但在Go里你可以把它放在一个单一结构中。因此如果你有一些需要若干缓存的数据结构，你可以把缓存放在结构的内存里，这不仅意味着高效（因为你不用间接得到缓存），而且还意味着单一结构可以在一步之内进行内存分配与垃圾回收。这样开销就会减少。因此，如果你考虑一下垃圾回收的实际情况，当你正在设计性能要求不高的东西时，你不应该总是考虑这个问题。但如果是高性能要求的，考虑到内存布局，尽管Go是具有真正垃圾回收特性的语言，它还是给了你工具，让你自己来控制有多少内存和产生了的垃圾。我想这是很多人容易忽略的。</p>
               
             </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../al/tree/" class="btn btn-neutral float-right" title="Tree">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../experience/" class="btn btn-neutral" title="Project Experience"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -193,6 +214,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
+      <span><a href="../experience/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../al/tree/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
