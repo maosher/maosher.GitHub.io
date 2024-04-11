@@ -13,7 +13,11 @@ nav:
         - Feature : golang\feature.md
         - Slice & Array : golang\slice.md
         - Project Experience : golang\experience.md
+        - 常见错误 : golang\common_mistake.md
         - Think About : golang\about.md
+        - 一些文章 : golang\docs.md
+    - Lua :
+        - Lua 和 c : lua\c.md
     - Algorithm :
         - Tree : al\tree.md   
         - Code : al\code.md
@@ -28,10 +32,14 @@ nav:
         - KV : db\kv.md
         - MongoDb : db\mongodb.md
     - ThirdParty :
-        - MessageQueue : third_party\mq.md        
+        - MessageQueue : third_party\mq.md      
+        - Etcd : third_party\etcd.md 
+        - Tools : third_party\tools.md
     - Game Design :
         - Framework : game\framework.md
         - Map : game\map.md
+    - Dev Ops :
+        - Docker : devops\docker.md
     - Links : links.md
     - About : about.md
 

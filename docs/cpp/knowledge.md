@@ -14,7 +14,10 @@ inline函数是函数，但在编译时不单独产生代码，而是将代码�
 4） 如果位域字段之间穿插着非位域字段，则不进行压缩。
 
 # 内存泄露
-
+htop top 查看内存增长
+重载内存分配释放 malloc/free new/delete
+hook 方式dlsym 
+addr2line
 ## 编译器选项
  ASAN
 

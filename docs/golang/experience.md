@@ -4,6 +4,8 @@
 ## 如何获取一个字符串的字符数：
 utf8.RuneCountInString(str)
 
+## 判断字符串是否是 UTF8 文本，可使用 "unicode/utf8" 包中的 ValidString() 函数
+
 ## Golang with Lua
 GopherLua  CGo
 
@@ -77,5 +79,33 @@ func main() {
 
 
 
-
-
+## json decode 数字类型默认为float64
+可以使用 struct 将数值类型映射为 json.RawMessage 原生数据类型
+适用于如果 JSON 数据不着急 decode 或 JSON 某个字段的值类型不固定等情况：
+~~~golang 
+var result struct {
+    Status json.RawMessage `json:"status"`
+    Tag string `json:"tag"`
+}
+var name string
+err = json.Unmarshal(result.Status, &name)
+if err == nil {
+    //name
+}
+var code uint64
+err = json.Unmarshal(result.Status, &code)
+if err == nil {
+    //code
+}
+~~~
+使用 Decoder 类型来 decode JSON 数据，明确表示字段的值类型
+~~~golang
+var data = []byte(`{"status": 200}`)
+var result map[string]interface{}
+var decoder = json.NewDecoder(bytes.NewReader(data))
+decoder.UseNumber()
+if err := decoder.Decode(&result); err != nil {
+    log.Fatalln(err)
+}
+var status, _ = result["status"].(json.Number).Int64()
+~~~
