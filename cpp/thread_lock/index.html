@@ -1,228 +1,316 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  <link rel="canonical" href="https://maosher.github.io/cpp/thread_lock/">
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Lock - My Read Note</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://maosher.github.io/cpp/thread_lock/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Lock - My Read Note</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
-  <link rel="stylesheet" href="../../css/theme.css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Lock";
-    var mkdocs_page_input_path = "cpp\\thread_lock.md";
-    var mkdocs_page_url = "/cpp/thread_lock/";
-  </script>
-  
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-</head>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
 
-<body class="wy-body-for-nav" role="document">
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">My Read Note</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-  <div class="wy-grid-for-nav">
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">编程语言 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">C++</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../cpp11/" class="dropdown-item">C++11</a>
+</li>
+            
+<li>
+    <a href="../knowledge/" class="dropdown-item">Knowledge Point</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Golang</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../golang/goroutine/" class="dropdown-item">Goroutine</a>
+</li>
+            
+<li>
+    <a href="../../golang/defer/" class="dropdown-item">Defer</a>
+</li>
+            
+<li>
+    <a href="../../golang/gc/" class="dropdown-item">GC</a>
+</li>
+            
+<li>
+    <a href="../../golang/feature/" class="dropdown-item">Feature</a>
+</li>
+            
+<li>
+    <a href="../../golang/slice/" class="dropdown-item">Slice & Array</a>
+</li>
+            
+<li>
+    <a href="../../golang/experience/" class="dropdown-item">Project Experience</a>
+</li>
+            
+<li>
+    <a href="../../golang/common_mistake/" class="dropdown-item">常见错误</a>
+</li>
+            
+<li>
+    <a href="../../golang/about/" class="dropdown-item">Think About</a>
+</li>
+            
+<li>
+    <a href="../../golang/docs/" class="dropdown-item">一些文章</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Lua</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../lua/c/" class="dropdown-item">Lua 和 c</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Algorithm <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../al/tree/" class="dropdown-item">Tree</a>
+</li>
+                                    
+<li>
+    <a href="../../al/code/" class="dropdown-item">Code</a>
+</li>
+                                    
+<li>
+    <a href="../../al/skiplist/" class="dropdown-item">SkipList</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Network & OS <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../os/tools/" class="dropdown-item">Tools</a>
+</li>
+                                    
+<li>
+    <a href="../../os/tcp/" class="dropdown-item">Tcp</a>
+</li>
+                                    
+<li>
+    <a href="../../os/shell/" class="dropdown-item">Linux shell</a>
+</li>
+                                    
+<li>
+    <a href="../../os/memory/" class="dropdown-item">Memory</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">数据库和消息队列 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../db/mysql/" class="dropdown-item">Mysql</a>
+</li>
+                                    
+<li>
+    <a href="../../db/kv/" class="dropdown-item">KV</a>
+</li>
+                                    
+<li>
+    <a href="../../db/mongodb/" class="dropdown-item">MongoDb</a>
+</li>
+                                    
+<li>
+    <a href="../../third_party/mq/" class="dropdown-item">MessageQueue</a>
+</li>
+                                    
+<li>
+    <a href="../../third_party/etcd/" class="dropdown-item">Etcd</a>
+</li>
+                                    
+<li>
+    <a href="../../third_party/tools/" class="dropdown-item">Tools</a>
+</li>
+                                    
+<li>
+    <a href="../../devops/docker/" class="dropdown-item">Docker</a>
+</li>
+                                    
+<li>
+    <a href="../../git/" class="dropdown-item">Git</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../links/" class="nav-link">Links</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../about/" class="nav-link">About</a>
+                            </li>
+                        </ul>
 
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> My Read Note</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../git/">Git</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">C++</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../cpp11/">C++11</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../knowledge/">Knowledge Point</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Golang</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/goroutine/">Goroutine</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/defer/">Defer</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/gc/">GC</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/feature/">Feature</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/slice/">Slice & Array</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/experience/">Project Experience</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/common_mistake/">常见错误</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/about/">Think About</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../golang/docs/">一些文章</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Lua</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../lua/c/">Lua 和 c</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Algorithm</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../al/tree/">Tree</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../al/code/">Code</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../al/skiplist/">SkipList</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Network & OS</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../os/tools/">Tools</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../os/tcp/">Tcp</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../os/shell/">Linux shell</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../os/memory/">Memory</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Database</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../db/mysql/">Mysql</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../db/kv/">KV</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../db/mongodb/">MongoDb</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">ThirdParty</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../third_party/mq/">MessageQueue</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../third_party/etcd/">Etcd</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../third_party/tools/">Tools</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Game Design</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../game/framework/">Framework</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../game/map/">Map</a>
-                    </li>
-                </ul>
-                <p class="caption"><span class="caption-text">Dev Ops</span></p>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../devops/docker/">Docker</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../links/">Links</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
-                    </li>
-                </ul>
-      </div>
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
     </div>
-    </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">My Read Note</a>
-      </nav>
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
     
-      
-    
-    <li>Lock</li>
-    <li class="wy-breadcrumbs-aside">
-      
-    </li>
-  </ul>
-  
-  <hr/>
-</div>
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#lock" class="nav-link">Lock</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#stdlock_guard" class="nav-link">std::lock_guard</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#stdunique_lock" class="nav-link">std::unique_lock</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
 
-          <div role="main">
-            <div class="section">
-              
-                <h1 id="lock">Lock</h1>
+<h1 id="lock">Lock</h1>
 <h2 id="stdlock_guard">std::lock_guard</h2>
 <p>作用域块期间占有互斥提供便利 RAII 风格机制。</p>
 <h2 id="stdunique_lock">std::unique_lock</h2>
 <p>允许延迟锁定、锁定的有时限尝试、递归锁定、所有权转移和与条件变量一同使用。
-可以手动解锁。</p>
-              
+可以手动解锁。</p></div>
             </div>
-          </div>
-          <footer>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-    
-  </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-      
         </div>
-      </div>
 
-    </section>
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-    
-    
-  </span>
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme_extra.js" defer></script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="../../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
 
-</body>
+    </body>
 </html>
