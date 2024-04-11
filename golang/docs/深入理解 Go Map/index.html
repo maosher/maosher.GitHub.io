@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://maosher.github.io/golang/docs/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20Go%20Map/">
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>深入理解 Go Map - My Read Note</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u6df1\u5165\u7406\u89e3 Go Map";
+    var mkdocs_page_input_path = "golang\\docs\\\u6df1\u5165\u7406\u89e3 Go Map.md";
+    var mkdocs_page_url = "/golang/docs/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%20Go%20Map/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> My Read Note</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../git/">Git</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">C++</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cpp/cpp11/">C++11</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../cpp/knowledge/">Knowledge Point</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Golang</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../goroutine/">Goroutine</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../defer/">Defer</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../gc/">GC</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../feature/">Feature</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../slice/">Slice & Array</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../experience/">Project Experience</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/">Think About</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../">一些文章</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Algorithm</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../al/tree/">Tree</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../al/code/">Code</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../al/skiplist/">SkipList</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Network & OS</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../os/tools/">Tools</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../os/tcp/">Tcp</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../os/shell/">Linux shell</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../os/memory/">Memory</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Database</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../db/mysql/">Mysql</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../db/kv/">KV</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../db/mongodb/">MongoDb</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">ThirdParty</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../third_party/mq/">MessageQueue</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../third_party/etcd/">Etcd</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Game Design</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../game/framework/">Framework</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../game/map/">Map</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../links/">Links</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../about/">About</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">My Read Note</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>深入理解 Go Map</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <p>哈希表的意义不言而喻，它能提供 O(1) 复杂度的读写性能，所以主流编程语言中都内置有哈希表。</p>
+<p>哈希表的关键在于哈希函数， 好的哈希函数能减少哈希碰撞，提供最优秀的读写性能。</p>
+<h1 id="_1">哈希碰撞</h1>
+<p>因为没有完美的哈希函数， 所以哈希碰撞不可避免，一般有开放寻址法和拉链法，其中拉链法是主流</p>
+<ul>
+<li>开放寻址法：当向哈希表写入新的数据时，如果发生了冲突，就会将键值对写入到下一个索引不为空的位置</li>
+</ul>
+<p><img alt="image" src="https://user-images.githubusercontent.com/87457873/129164275-f6c252fe-406f-4d07-8024-ba99dc7f9524.png" /></p>
+<ul>
+<li>拉链法：拉链法一般使用数组和链表组成，数据经过哈希函数得到一个桶时，先遍历桶中的链表，存在相同的键值对，则更新，不存在则在链表末尾追加新键值对</li>
+</ul>
+<p><img alt="image" src="https://user-images.githubusercontent.com/87457873/129164344-29818990-fea2-4552-acab-a07d53b5c3b3.png" /></p>
+<h1 id="go">Go 表示哈希表的数据结构</h1>
+<pre><code class="language-go">type hmap struct {
+  // 表示哈希表中元素的数量
+    count     int
+  flags     uint8
+
+  // 表示哈希表中桶的数量， len(buckets) = 2^B
+    B         uint8
+  noverflow uint16
+
+  // hash函数的种子
+  hash0     uint32
+
+    buckets    unsafe.Pointer
+
+  // 用于在扩容时保存之前 buckets
+  // 因为每次扩容都是2的倍数，所以 bucket = 2oldbuckets
+    oldbuckets unsafe.Pointer
+    nevacuate  uintptr
+
+    extra *mapextra
+}
+
+type mapextra struct {
+    overflow    *[]*bmap
+    oldoverflow *[]*bmap
+    nextOverflow *bmap
+}
+</code></pre>
+<p><img alt="image" src="https://user-images.githubusercontent.com/87457873/129164391-7cae687d-2b78-4fcd-ae29-79d741db5dfd.png" /></p>
+<p>哈希表 hmap 的桶是 bmap，每个 bmap 都能存储 8 个键值对，单个桶装满时会使用 nextOverflow 桶存储溢出的数据</p>
+<pre><code class="language-go">type bmap struct {
+    // 存储了键的哈希的高 8 位
+  // 通过比较不同键的哈希的高 8 位可以减少访问键值对次数以提高性能
+  tophash [bucketCnt]uint8
+}
+</code></pre>
+<h1 id="map">访问 map 中的数据</h1>
+<p><img alt="image" src="https://user-images.githubusercontent.com/87457873/129164455-18812f73-6f36-425a-ae5b-c75620fa3711.png" /></p>
+<p>如上图所示，每一个桶都是一整片的内存空间，当发现桶中的 tophash 与传入键的 tophash 匹配之后，我们会通过指针和偏移量获取哈希中存储的键 keys[0] 并与 key 比较，如果两者相同就会获取目标值的指针 values[0] 并返回</p>
+<h1 id="map_1">向 map 写入数据</h1>
+<p><img alt="image" src="https://user-images.githubusercontent.com/87457873/129164489-5d5bf08d-5db1-40fa-b418-b1b905c7225c.png" /></p>
+<p>函数会根据传入的键拿到对应的哈希和桶，通过遍历比较桶中存储的 tophash 和键的哈希，如果找到了相同结果就会返回目标位置的地址，获得目标地址之后会通过算术计算寻址获得键值对 k 和 val， 如果当前键值对在哈希中不存在，哈希会为新键值对规划存储的内存地址，这期间只会返回内存地址，真正的赋值操作是在编译期间插入的。</p>
+<pre><code>00018 (+5) CALL runtime.mapassign_fast64(SB)
+00020 (5) MOVQ 24(SP), DI               ;; DI = &amp;value
+00026 (5) LEAQ go.string."88"(SB), AX   ;; AX = &amp;"88"
+00027 (5) MOVQ AX, (DI)                 ;; *DI = AX
+</code></pre>
+<p>我们通过 LEAQ 指令将字符串的地址存储到寄存器 AX 中，MOVQ 指令将字符串 "88" 存储到了目标地址上完成了这次哈希的写入</p>
+<h1 id="_2">扩容</h1>
+<p>随着哈希表中元素的逐渐增加，哈希表的性能会逐渐恶化，当装载因子 &gt; 6.5 时， 或者 哈希表创建了太多的溢出桶， 会触发扩容</p>
+<blockquote>
+<p>装载因子 = 元素数量 / 桶数量</p>
+</blockquote>
+<p>哈希表在扩容的过程中会创建一组新桶和溢出桶，随后将原油的桶数组设置到 oldbuckets 上，将新桶设置到 buckets 上，新计算旧桶内元素的哈希到新桶上，</p>
+<p>在扩容期间访问哈希表时会使用旧桶，整个期间元素再分配的过程也是在调用写操作时增量进行的，不会造成性能的瞬时巨大抖动</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

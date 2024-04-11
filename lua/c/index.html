@@ -7,9 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="canonical" href="https://maosher.github.io/third_party/etc/">
+  <link rel="canonical" href="https://maosher.github.io/lua/c/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Etcd - My Read Note</title>
+  <title>Lua和c语言调用 - My Read Note</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,9 +18,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Etcd";
-    var mkdocs_page_input_path = "third_party\\etc.md";
-    var mkdocs_page_url = "/third_party/etc/";
+    var mkdocs_page_name = "Lua\u548cc\u8bed\u8a00\u8c03\u7528";
+    var mkdocs_page_input_path = "lua\\c.md";
+    var mkdocs_page_url = "/lua/c/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -77,6 +77,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../golang/about/">Think About</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../golang/docs/">一些文章</a>
+                    </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Algorithm</span></p>
                 <ul>
@@ -109,7 +111,9 @@
                 </ul>
                 <p class="caption"><span class="caption-text">ThirdParty</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="../mq/">MessageQueue</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../third_party/mq/">MessageQueue</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../third_party/etcd/">Etcd</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Game Design</span></p>
@@ -148,7 +152,7 @@
     
       
     
-    <li>Etcd</li>
+    <li>Lua和c语言调用</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -160,8 +164,16 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="etcd">Etcd</h1>
-<h2 id="_1">一致性算法</h2>
+                <h1 id="luac">Lua和c语言调用</h1>
+<h2 id="clua">c调用Lua</h2>
+<p>lua函数入栈
+lua_getglobal(L, "lua_funcName")</p>
+<p>lua_pushnumber(L, 2) //参数入栈
+...  //如果多个参数， 要考虑检查栈空间够不够</p>
+<p>lua_pcall(L, n, r, 0)  //调用lua 函数, n表示参数个数，r返回值个数</p>
+<p>//错误检查
+//弹出返回值</p>
+<h2 id="luac_1">lua调用c</h2>
               
             </div>
           </div>

@@ -77,6 +77,8 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#_1">如何获取一个字符串的字符数：</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#utf8-unicodeutf8-validstring">判断字符串是否是 UTF8 文本，可使用 "unicode/utf8" 包中的 ValidString() 函数</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#golang-with-lua">Golang with Lua</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#_2">性能优化</a>
@@ -101,9 +103,13 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#chan">使用chan 来限制并发数</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#json-decode-float64">json decode 数字类型默认为float64</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../about/">Think About</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../docs/">一些文章</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Algorithm</span></p>
@@ -138,6 +144,8 @@
                 <p class="caption"><span class="caption-text">ThirdParty</span></p>
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../../third_party/mq/">MessageQueue</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../third_party/etcd/">Etcd</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">Game Design</span></p>
@@ -195,6 +203,7 @@
                 <h1 id="some-experience">Some Experience</h1>
 <h2 id="_1">如何获取一个字符串的字符数：</h2>
 <p>utf8.RuneCountInString(str)</p>
+<h2 id="utf8-unicodeutf8-validstring">判断字符串是否是 UTF8 文本，可使用 "unicode/utf8" 包中的 ValidString() 函数</h2>
 <h2 id="golang-with-lua">Golang with Lua</h2>
 <p>GopherLua  CGo</p>
 <h2 id="_2">性能优化</h2>
@@ -256,6 +265,34 @@ func main() {
     queue := make(chan *Request)
     go Server(queue)
 }
+</code></pre>
+<h2 id="json-decode-float64">json decode 数字类型默认为float64</h2>
+<p>可以使用 struct 将数值类型映射为 json.RawMessage 原生数据类型
+适用于如果 JSON 数据不着急 decode 或 JSON 某个字段的值类型不固定等情况：</p>
+<pre><code class="language-golang">var result struct {
+    Status json.RawMessage `json:&quot;status&quot;`
+    Tag string `json:&quot;tag&quot;`
+}
+var name string
+err = json.Unmarshal(result.Status, &amp;name)
+if err == nil {
+    //name
+}
+var code uint64
+err = json.Unmarshal(result.Status, &amp;code)
+if err == nil {
+    //code
+}
+</code></pre>
+<p>使用 Decoder 类型来 decode JSON 数据，明确表示字段的值类型</p>
+<pre><code class="language-golang">var data = []byte(`{&quot;status&quot;: 200}`)
+var result map[string]interface{}
+var decoder = json.NewDecoder(bytes.NewReader(data))
+decoder.UseNumber()
+if err := decoder.Decode(&amp;result); err != nil {
+    log.Fatalln(err)
+}
+var status, _ = result[&quot;status&quot;].(json.Number).Int64()
 </code></pre>
               
             </div>
