@@ -18,26 +18,26 @@
 
 
 ## 基本概念
-Image 镜像
-Container 容器
-Repository 仓库 hub.docker.com
+Image 镜像  
+Container 容器  
+Repository 仓库 hub.docker.com  
 
-client - server 架构 
+client - server 架构   
 client 发命令给server ， server守护进程执行命令
 ## 命令
-docker images 
-docker search 
-docker pull
-docker ps -a
-docker run -it ubuntu /bin/bash 
-docker run -d ubuntu 
-ctrl + p + q
-docker start | stop | restart 
-docker attach 
-docker exec -it 
-docker container prune 移除所有未运行容器
-docker build 
+docker images   
+docker search   
+docker pull  
+docker ps -a  
+docker run -it ubuntu /bin/bash   
+docker run -d ubuntu   
+ctrl + p + q  
+docker start | stop | restart   
+docker attach   
+docker exec -it   
+docker container prune 移除所有未运行容器  
+docker build   
 
-docker top 
-docker inspect 
+docker top   
+docker inspect   
 

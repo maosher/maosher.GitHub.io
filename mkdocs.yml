@@ -2,22 +2,22 @@ site_name: My Read Note
 site_url: https://maosher.github.io/
 nav:
     - Home : index.md
-    - Git : git.md
-    - C++ : 
-        - C++11 : cpp\cpp11.md
-        - Knowledge Point : cpp\knowledge.md
-    - Golang : 
-        - Goroutine : golang\goroutine.md
-        - Defer : golang\defer.md
-        - GC : golang\gc.md
-        - Feature : golang\feature.md
-        - Slice & Array : golang\slice.md
-        - Project Experience : golang\experience.md
-        - 常见错误 : golang\common_mistake.md
-        - Think About : golang\about.md
-        - 一些文章 : golang\docs.md
-    - Lua :
-        - Lua 和 c : lua\c.md
+    - 编程语言:
+        - C++ : 
+            - C++11 : cpp\cpp11.md
+            - Knowledge Point : cpp\knowledge.md
+        - Golang : 
+            - Goroutine : golang\goroutine.md
+            - Defer : golang\defer.md
+            - GC : golang\gc.md
+            - Feature : golang\feature.md
+            - Slice & Array : golang\slice.md
+            - Project Experience : golang\experience.md
+            - 常见错误 : golang\common_mistake.md
+            - Think About : golang\about.md
+            - 一些文章 : golang\docs.md
+        - Lua :
+            - Lua 和 c : lua\c.md
     - Algorithm :
         - Tree : al\tree.md   
         - Code : al\code.md
@@ -27,22 +27,20 @@ nav:
         - Tcp : os\tcp.md
         - Linux shell : os\shell.md
         - Memory : os\memory.md
-    - Database :    
+    - 数据库和消息队列 :
         - Mysql : db\mysql.md
-        - KV : db\kv.md
-        - MongoDb : db\mongodb.md
-    - ThirdParty :
+        - Redis : db\redis.md
+        - MongoDb : db\mongodb.md   
+        - 其它数据库 : db\other.md
         - MessageQueue : third_party\mq.md      
         - Etcd : third_party\etcd.md 
         - Tools : third_party\tools.md
-    - Game Design :
-        - Framework : game\framework.md
-        - Map : game\map.md
     - Dev Ops :
         - Docker : devops\docker.md
+        - Git : git.md
     - Links : links.md
     - About : about.md
 
 theme:
-  #name: material
-  name: readthedocs
+  name: mkdocs
+  #name: readthedocs
