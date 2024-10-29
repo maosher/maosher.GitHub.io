@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://maosher.github.io/db/redis/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Redis - My Read Note</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">My Read Note</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">编程语言</a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">C++</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../cpp/cpp11/" class="dropdown-item">C++11</a>
+</li>
+            
+<li>
+    <a href="../../cpp/base/" class="dropdown-item">基础</a>
+</li>
+            
+<li>
+    <a href="../../cpp/knowledge/" class="dropdown-item">Knowledge Point</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Golang</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../golang/goroutine/" class="dropdown-item">Goroutine</a>
+</li>
+            
+<li>
+    <a href="../../golang/defer/" class="dropdown-item">Defer</a>
+</li>
+            
+<li>
+    <a href="../../golang/gc/" class="dropdown-item">GC</a>
+</li>
+            
+<li>
+    <a href="../../golang/feature/" class="dropdown-item">Feature</a>
+</li>
+            
+<li>
+    <a href="../../golang/slice/" class="dropdown-item">Slice & Array</a>
+</li>
+            
+<li>
+    <a href="../../golang/experience/" class="dropdown-item">Project Experience</a>
+</li>
+            
+<li>
+    <a href="../../golang/common_mistake/" class="dropdown-item">常见错误</a>
+</li>
+            
+<li>
+    <a href="../../golang/about/" class="dropdown-item">Think About</a>
+</li>
+            
+<li>
+    <a href="../../golang/docs/" class="dropdown-item">一些文章</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Lua</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../lua/c/" class="dropdown-item">Lua 和 c</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Algorithm</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../al/tree/" class="dropdown-item">Tree</a>
+</li>
+                                    
+<li>
+    <a href="../../al/sort/" class="dropdown-item">Sort</a>
+</li>
+                                    
+<li>
+    <a href="../../al/code/" class="dropdown-item">Code</a>
+</li>
+                                    
+<li>
+    <a href="../../al/skiplist/" class="dropdown-item">SkipList</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Network & OS</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../os/network/" class="dropdown-item">Network</a>
+</li>
+                                    
+<li>
+    <a href="../../os/tools/" class="dropdown-item">Tools</a>
+</li>
+                                    
+<li>
+    <a href="../../os/tcp/" class="dropdown-item">Tcp</a>
+</li>
+                                    
+<li>
+    <a href="../../os/shell/" class="dropdown-item">Linux shell</a>
+</li>
+                                    
+<li>
+    <a href="../../os/memory/" class="dropdown-item">Memory</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">数据库和消息队列</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../mysql/" class="dropdown-item">Mysql</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Redis</a>
+</li>
+                                    
+<li>
+    <a href="../mongodb/" class="dropdown-item">MongoDb</a>
+</li>
+                                    
+<li>
+    <a href="../other/" class="dropdown-item">其它数据库</a>
+</li>
+                                    
+<li>
+    <a href="../../third_party/mq/" class="dropdown-item">MessageQueue</a>
+</li>
+                                    
+<li>
+    <a href="../../third_party/etcd/" class="dropdown-item">Etcd</a>
+</li>
+                                    
+<li>
+    <a href="../../third_party/tools/" class="dropdown-item">Tools</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Dev Ops</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../devops/docker/" class="dropdown-item">Docker</a>
+</li>
+                                    
+<li>
+    <a href="../../git/" class="dropdown-item">Git</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../links/" class="nav-link">Links</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../about/" class="nav-link">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../mysql/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../mongodb/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#redis" class="nav-link">Redis</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_1" class="nav-link">数据类型</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_2" class="nav-link">底层数据结构</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_3" class="nav-link">多实例使用模式</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#_4" class="nav-link">集群模式</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_5" class="nav-link">主从复制模式</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sentinel" class="nav-link">Sentinel（哨兵）模式</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_6" class="nav-link">实用案例</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#redis_1" class="nav-link">Redis做异步队列</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#redis_2" class="nav-link">redis如何实现延时队列</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="redis">Redis</h1>
+<p>BigKey 问题
+OOM, 存储不均衡， 查询慢（占带宽), 删除慢</p>
+<p>字符串类型：它的big体现在单个value值很大，一般认为超过10KB就是bigkey。<br />
+非字符串类型：哈希、列表、集合、有序集合，它们的big体现在元素个数太多。</p>
+<p>redis-cli --bigkeys  有风险! 在slave 本机执行，避免网络开销.<br />
+可以使用 --i 0.1 代表100毫秒执行一次  </p>
+<p>debug object ${key}命令获取键值的相关信息</p>
+<h1 id="_1">数据类型</h1>
+<p><img alt="" src="../img/db_redis_1.png" />
++ 字符串String 
+    + int 编码：保存的是可以用 long 类型表示的整数值。
+    + embstr 编码：保存长度小于44字节的字符串（before redis3.2 39字节）。
+    + raw 编码：保存长度大于44字节的字符串（before redis3.2 39字节）。 
++ 集合Set<br />
++ 哈希Hash<br />
++ 列表List<br />
++ 有序集SortedSet  <br />
+    + 使用ziplist 编码：保存的元素数量小于128； 保存的所有元素长度都小于64字节  <br />
+    + 其实有序集合单独使用字典或跳跃表其中一种数据结构都可以实现，但是这里使用两种数据结构组合起来，原因是假如我们单独使用 字典，虽然能 以 O(1) 的时间复杂度查找成员的分值，但是因为字典是以无序的方式来保存集合元素，所以每次进行范围操作的时候都要进行排序；假如我们单独使用跳跃表来实现，虽然能执行范围操作，但是查找操作有 O(1)的复杂度变为了O(logN)</p>
+<h1 id="_2">底层数据结构</h1>
+<ul>
+<li>简单动态字符串（SDS）  </li>
+<li>字典   </li>
+<li>链表  </li>
+<li>跳跃表  <ul>
+<li>有很多层组成，由上到下节点数逐渐密集，最上层的节点最稀疏，跨度也最大。</li>
+<li>每一层都是一个有序链表，只扫包含两个节点，头节点和尾节点。</li>
+<li>每一层的每一个每一个节点都含有指向同一层下一个节点和下一层同一个位置节点的指针。</li>
+<li>如果一个节点在某一层出现，那么该以下的所有链表同一个位置都会出现该节点。</li>
+</ul>
+</li>
+<li>整数集合  </li>
+<li>压缩列表  </li>
+</ul>
+<h1 id="_3">多实例使用模式</h1>
+<h2 id="_4">集群模式</h2>
+<p>三主， 多从（备）</p>
+<p>优点<br />
+1.  无中心架构，数据按照slot分布在多个节点。<br />
+2.  集群中的每个节点都是平等的关系，每个节点都保存各自的数据和整个集群的状态。每个节点都和其他所有节点连接，而且这些连接保持活跃，这样就保证了我们只需要连接集群中的任意一个节点，就可以获取到其他节点的数据。<br />
+3.  可线性扩展到1000多个节点，节点可动态添加或删除<br />
+4.  能够实现自动故障转移，节点之间通过gossip协议交换状态信息，用投票机制完成slave到master的角色转换</p>
+<p>缺点<br />
+1. 客户端实现复杂，驱动要求实现Smart Client，缓存slots mapping信息并及时更新，提高了开发难度。目前仅JedisCluster相对成熟，异常处理还不完善，比如常见的“max redirect exception”<br />
+2. 节点会因为某些原因发生阻塞（阻塞时间大于 cluster-node-timeout）被判断下线，这种failover是没有必要的<br />
+3. 数据通过异步复制，不保证数据的强一致性<br />
+4. slave充当“冷备”，不能缓解读压力<br />
+5. 批量操作限制，目前只支持具有相同slot值的key执行批量操作，对mset、mget、sunion等操作支持不友好<br />
+6. key事务操作支持有线，只支持多key在同一节点的事务操作，多key分布不同节点时无法使用事务功能<br />
+7. 不支持多数据库空间，单机redis可以支持16个db，集群模式下只能使用一个，即db 0  </p>
+<h2 id="_5">主从复制模式</h2>
+<p>一主多从，读写分离<br />
+优点： 
+ master能自动将数据同步到slave，可以进行读写分离，分担master的读压力<br />
+ master、slave之间的同步是以非阻塞的方式进行的，同步期间，客户端仍然可以提交查询或更新请求<br />
+缺点:<br />
+ 不具备自动容错与恢复功能，master或slave的宕机都可能导致客户端请求失败，需要等待机器重启或手动切换客户端IP才能恢复
+ master宕机，如果宕机前数据没有同步完，则切换IP后会存在数据不一致的问题
+ 难以支持在线扩容，Redis的容量受限于单机配置</p>
+<h2 id="sentinel">Sentinel（哨兵）模式</h2>
+<p>基于主从复制模式，只是引入了哨兵来监控与自动处理故障。</p>
+<p>优点:<br />
+ 哨兵模式基于主从复制模式，所以主从复制模式有的优点，哨兵模式也有
+ 哨兵模式下，master挂掉可以自动进行切换，系统可用性更高<br />
+缺点：<br />
+ 同样也继承了主从模式难以在线扩容的缺点，Redis的容量受限于单机配置
+ 需要额外的资源来启动sentinel进程，实现相对复杂一点，同时slave节点作为备份节点不提供服务</p>
+<h1 id="_6">实用案例</h1>
+<h2 id="redis_1">Redis做异步队列</h2>
+<p>使用list结构作为队列，rpush生产消息，lpop消费消息。当lpop没有消息的时候，要适当sleep一会再重试。<br />
+可不可以不用sleep呢？list还有个指令叫blpop，在没有消息的时候，它会阻塞住直到消息到来。 
+能不能生产一次消费多次呢？使用pub/sub主题订阅者模式，可以实现1:N的消息队列。  <br />
+pub/sub有什么缺点？在消费者下线的情况下，生产的消息会丢失，得使用专业的消息队列如rabbitmq等。</p>
+<h2 id="redis_2">redis如何实现延时队列</h2>
+<p>使用sortedset，拿时间戳作为score，消息内容作为key调用zadd来生产消息，消费者用zrangebyscore指令获取N秒之前的数据轮询进行处理。  </p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

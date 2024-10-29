@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://maosher.github.io/cpp/base/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>基础 - My Read Note</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">My Read Note</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">编程语言</a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">C++</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../cpp11/" class="dropdown-item">C++11</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">基础</a>
+</li>
+            
+<li>
+    <a href="../knowledge/" class="dropdown-item">Knowledge Point</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Golang</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../golang/goroutine/" class="dropdown-item">Goroutine</a>
+</li>
+            
+<li>
+    <a href="../../golang/defer/" class="dropdown-item">Defer</a>
+</li>
+            
+<li>
+    <a href="../../golang/gc/" class="dropdown-item">GC</a>
+</li>
+            
+<li>
+    <a href="../../golang/feature/" class="dropdown-item">Feature</a>
+</li>
+            
+<li>
+    <a href="../../golang/slice/" class="dropdown-item">Slice & Array</a>
+</li>
+            
+<li>
+    <a href="../../golang/experience/" class="dropdown-item">Project Experience</a>
+</li>
+            
+<li>
+    <a href="../../golang/common_mistake/" class="dropdown-item">常见错误</a>
+</li>
+            
+<li>
+    <a href="../../golang/about/" class="dropdown-item">Think About</a>
+</li>
+            
+<li>
+    <a href="../../golang/docs/" class="dropdown-item">一些文章</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Lua</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../../lua/c/" class="dropdown-item">Lua 和 c</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Algorithm</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../al/tree/" class="dropdown-item">Tree</a>
+</li>
+                                    
+<li>
+    <a href="../../al/sort/" class="dropdown-item">Sort</a>
+</li>
+                                    
+<li>
+    <a href="../../al/code/" class="dropdown-item">Code</a>
+</li>
+                                    
+<li>
+    <a href="../../al/skiplist/" class="dropdown-item">SkipList</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Network & OS</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../os/network/" class="dropdown-item">Network</a>
+</li>
+                                    
+<li>
+    <a href="../../os/tools/" class="dropdown-item">Tools</a>
+</li>
+                                    
+<li>
+    <a href="../../os/tcp/" class="dropdown-item">Tcp</a>
+</li>
+                                    
+<li>
+    <a href="../../os/shell/" class="dropdown-item">Linux shell</a>
+</li>
+                                    
+<li>
+    <a href="../../os/memory/" class="dropdown-item">Memory</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">数据库和消息队列</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../db/mysql/" class="dropdown-item">Mysql</a>
+</li>
+                                    
+<li>
+    <a href="../../db/redis/" class="dropdown-item">Redis</a>
+</li>
+                                    
+<li>
+    <a href="../../db/mongodb/" class="dropdown-item">MongoDb</a>
+</li>
+                                    
+<li>
+    <a href="../../db/other/" class="dropdown-item">其它数据库</a>
+</li>
+                                    
+<li>
+    <a href="../../third_party/mq/" class="dropdown-item">MessageQueue</a>
+</li>
+                                    
+<li>
+    <a href="../../third_party/etcd/" class="dropdown-item">Etcd</a>
+</li>
+                                    
+<li>
+    <a href="../../third_party/tools/" class="dropdown-item">Tools</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Dev Ops</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../devops/docker/" class="dropdown-item">Docker</a>
+</li>
+                                    
+<li>
+    <a href="../../git/" class="dropdown-item">Git</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../links/" class="nav-link">Links</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../about/" class="nav-link">About</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../cpp11/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../knowledge/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_1" class="nav-link">面向对象的特性</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_2" class="nav-link">面向对象的实现方式</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_3" class="nav-link">多态的实现</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#_4" class="nav-link">虚表</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#_5" class="nav-link">多继承模型下的虚表模型</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#stl" class="nav-link">stl 有那些容器</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="_1">面向对象的特性</h1>
+<p>抽象，把现实对应的事物，组织成为数据结构和过程<br />
+封装，给数据或者过程的访问包围起来，易维护
+继承，连接，表明类的层次， 表达共性， 重用父类的代码
+多态，父子类的对象在执行过程实现不同的行为   </p>
+<h1 id="_2">面向对象的实现方式</h1>
+<p>定义类，实例化类的对象，通过对象调用方法  </p>
+<h1 id="_3">多态的实现</h1>
+<p>子类重写父类的虚函数，通过指针或者引用调用方法</p>
+<h1 id="_4">虚表</h1>
+<p>a.先将基类中的虚表内容拷贝一份到派生类虚表中。<br />
+b.如果派生类重写了基类中某个虚函数，用派生类自己的虚函数覆盖虚表中基类的虚函数。<br />
+c.派生类自己新增加的虚函数按其在派生类中的声明次序增加到派生类虚表的最后。  </p>
+<ul>
+<li>对于被重写的虚函数，会将新地址覆盖了原来虚函数的地址，而没有被重写的地址将会被保留。</li>
+<li>对于打印虚函数的地址而言，虚表位于整个类的前四个字节，因为是一个指针，所以只占用四个字节</li>
+</ul>
+<h2 id="_5">多继承模型下的虚表模型</h2>
+<p>父类的虚表均继承下来，完成重写的覆盖
+子类的成员函数被放到了第一个父类的表中。（所谓的第一个父类是按照声明顺序来判断的）</p>
+<h2 id="stl">stl 有那些容器</h2>
+<p>vector, list, array, queue 队列, forward_list 单向链表， stack
+map, set,  multiset, multimap, unordered_map, unordered_set, unordered_multimap, unordered_multiset  </p>
+<p>5.内存中的堆和栈是指什么？
+操作系统对于程序运行时的内存二种管理方式
+栈由系统自动分配释放， 方法调用，局部变量，参数，返回值，生命周期短，空间比较小
+堆由用户代码，申请和回收， 或者一些垃圾回收释放， 空间不连续</p>
+<p>6.全局变量和局部变量的差别？编译器中局部变量是怎么实现的？
+作用域不同，
+生命周期不同，
+内存存储方式不同，全局数据区，栈区
+使用方式不同</p>
+<p>语言中的全局变量和静态变量以及函数，在编译器和汇编器处理后生成符号并被保存在符号表中
+编译器生成的目标代码将包含对局部变量在堆栈帧中位置的引用。例如，在x86架构上，局部变量可能通过基于堆栈指针（如ebp寄存器）的偏移量来访问。</p>
+<p>7.智能指针是什么？有哪些？什么作用？
+是一种对原生指针管理资源的一种封装。
+自动管理内存，避免了手动管理内存时的繁琐和错误，使得编写代码更加简单、灵活和易于维护。<br />
+shared_ptr, unique_ptr, weak_ptr</p>
+<p>8.构造函数和析构函数的顺序？
+构造：基类，包含类，子类 
+析构：子类，包含类, 基类<br />
+8.搜索有哪些方式？深搜和广搜的区别？
+遗传肯德基法，<br />
+蒙特卡洛树搜索 :随机采样的搜索算法，它通过模拟随机事件来评估不同选择的好坏。蒙特卡洛树搜索通常用于游戏AI中，如围棋、五子棋等。<br />
+深度优先搜索（DFS）：深度优先搜索是一种尽可能“深”地搜索树的算法。它的基本思想是，为了求得问题的解，先选择某一种可能情况向前（子节点）探索，在探索过程中，一旦发现原来的选择不符合要求，就回溯至父节点重新选择另一节点，继续向前探索，如此反复进行，直至求得最优解。深度优先搜索的实现方式可以采用递归或者栈来实现。<br />
+广度优先搜索（BFS）：广度优先搜索是一种先搜索树的根节点，然后逐层向下搜索的算法。与深度优先搜索不同，广度优先搜索会先搜索完同一层的所有节点，然后再进入下一层。这种搜索方式通常用于图的遍历。</p>
+<p>9.什么是堆排序？怎么实现？堆加入一个元素的时间复杂度？
+堆，小根堆的节点总是大于其父节点，形成一个完全二叉树
+堆排序的步骤 : (升序构建大根堆, 降序构建小根堆, 下面以升序为例)<br />
+1. 先进行堆的创建( 将一个数组变成一个大根堆 )<br />
+2. 再将堆顶根节点和最后一个节点交换 , 这时 , 最大值已经是最后一个节点 , 剩余待排序节点数为 n - 1<br />
+3. 将剩余的 n - 1个节点的完全二叉树再构建成一个大根堆 ,也就是重复步骤1 , 2 ,如此反复<br />
+稳定性 :不稳定
+时间复杂度 :O(N<em>logN)
+空间复杂度 : O(N</em>logN)</p>
+<p>10.哈希表是什么？怎么实现？
+散列表（Hash table，也叫哈希表），是根据关键码值(Key value)而直接进行访问的数据结构。也就是说，它通过把关键码值映射到表中一个位置来访问记录，以加快查找的速度。这个映射函数叫做散列函数，存放记录的数组叫做散列表。
+给定表M，存在函数f(key)，对任意给定的关键字值key，代入函数后若能得到包含该关键字的记录在表中的地址，则称表M为哈希（Hash）表，函数f(key)为哈希(Hash) 函数。</p>
+<p>11.什么是红黑树？
+红黑树（Red Black Tree） 是一种自平衡二叉查找树，
+12.红黑树怎么加入一个都是在进行插入和删除操作时通过特定操作保持二叉查找树的平衡，从而获得较高的查找性能。
+它虽然是复杂的，但它的最坏情况运行时间也是非常良好的，并且在实践中是高效的： 它可以在O(log n)时间内做查找，插入和删除，这里的n 是树中元素的数目。</p>
+<p>13.红黑树能不能有两个相邻红节点？
+不能
+14.进程和线程的区别？</p>
+<p>15.CPU调度机制有哪些？
+3.1 先到先服务调度(FCFS)
+3.2 最短作业优先(SJF)
+3.3 最短剩余时间优先调度(抢占型SJF)
+3.4 优先级调度(SJF)
+3.5 轮转法调度(RR)
+16.UDP和TDP的区别？</p>
+<p>17.TCP的三次握手四次分手是什么？</p>
+<p>18.求斐波那契数列第n项，简述方法？</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

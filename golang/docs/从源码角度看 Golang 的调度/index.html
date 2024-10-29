@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +10,15 @@
         <link rel="shortcut icon" href="../../../img/favicon.ico">
         <title>1.简单概念 - My Read Note</title>
         <link href="../../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../../css/brands.min.css" rel="stylesheet">
+        <link href="../../../css/solid.min.css" rel="stylesheet">
+        <link href="../../../css/v4-font-face.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
-
-        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -25,7 +26,7 @@
             <div class="container">
                 <a class="navbar-brand" href="../../..">My Read Note</a>
                 <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -33,11 +34,11 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">编程语言 <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">编程语言</a>
                                 <ul class="dropdown-menu">
                                     
   <li class="dropdown-submenu">
@@ -46,6 +47,10 @@
             
 <li>
     <a href="../../../cpp/cpp11/" class="dropdown-item">C++11</a>
+</li>
+            
+<li>
+    <a href="../../../cpp/base/" class="dropdown-item">基础</a>
 </li>
             
 <li>
@@ -107,12 +112,16 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Algorithm <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Algorithm</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
     <a href="../../../al/tree/" class="dropdown-item">Tree</a>
+</li>
+                                    
+<li>
+    <a href="../../../al/sort/" class="dropdown-item">Sort</a>
 </li>
                                     
 <li>
@@ -124,9 +133,13 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Network & OS <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Network & OS</a>
                                 <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../os/network/" class="dropdown-item">Network</a>
+</li>
                                     
 <li>
     <a href="../../../os/tools/" class="dropdown-item">Tools</a>
@@ -145,8 +158,8 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">数据库和消息队列 <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">数据库和消息队列</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -154,11 +167,15 @@
 </li>
                                     
 <li>
-    <a href="../../../db/kv/" class="dropdown-item">KV</a>
+    <a href="../../../db/redis/" class="dropdown-item">Redis</a>
 </li>
                                     
 <li>
     <a href="../../../db/mongodb/" class="dropdown-item">MongoDb</a>
+</li>
+                                    
+<li>
+    <a href="../../../db/other/" class="dropdown-item">其它数据库</a>
 </li>
                                     
 <li>
@@ -172,6 +189,11 @@
 <li>
     <a href="../../../third_party/tools/" class="dropdown-item">Tools</a>
 </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Dev Ops</a>
+                                <ul class="dropdown-menu">
                                     
 <li>
     <a href="../../../devops/docker/" class="dropdown-item">Docker</a>
@@ -182,17 +204,17 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../../../links/" class="nav-link">Links</a>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../../../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
@@ -203,113 +225,113 @@
 
         <div class="container">
             <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#1" class="nav-link">1.简单概念</a>
+            <li class="nav-item" data-bs-level="1"><a href="#1" class="nav-link">1.简单概念</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#11-gmp" class="nav-link">1.1 调度器的三个抽象概念：G、M、P</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#12" class="nav-link">1.2 调度的大致轮廓</a>
+            <li class="nav-item" data-bs-level="2"><a href="#11-gmp" class="nav-link">1.1 调度器的三个抽象概念：G、M、P</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#2" class="nav-link">2.进程启动时都做了什么</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#21-runtimeosinitsb" class="nav-link">2.1 runtime.osinit(SB)方法针对系统环境的初始化</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#22-runtimeschedinitsb" class="nav-link">2.2 runtime.schedinit(SB)调度相关的一些初始化</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#23-runtimemainpcsb" class="nav-link">2.3 runtime·mainPC(SB)启动监控任务</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#24-runtimemstartsb" class="nav-link">2.4 最后 runtime·mstart(SB)启动调度循环</a>
+            <li class="nav-item" data-bs-level="2"><a href="#12" class="nav-link">1.2 调度的大致轮廓</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#3" class="nav-link">3.调度循环都做了什么</a>
+            <li class="nav-item" data-bs-level="1"><a href="#2" class="nav-link">2.进程启动时都做了什么</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#31" class="nav-link">3.1 调度器如何开启调度循环</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#32" class="nav-link">3.2 调度器如何进行调度循环</a>
+            <li class="nav-item" data-bs-level="2"><a href="#21-runtimeosinitsb" class="nav-link">2.1 runtime.osinit(SB)方法针对系统环境的初始化</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#33" class="nav-link">3.3 多个线程下如何调度</a>
+            <li class="nav-item" data-bs-level="2"><a href="#22-runtimeschedinitsb" class="nav-link">2.2 runtime.schedinit(SB)调度相关的一些初始化</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-              </ul>
-            </li>
-            
-            <li class="nav-item" data-level="1"><a href="#4-cpu" class="nav-link">4.调度循环中如何让出 CPU</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#41-cpu" class="nav-link">4.1 执行完成让出 CPU</a>
+            <li class="nav-item" data-bs-level="2"><a href="#23-runtimemainpcsb" class="nav-link">2.3 runtime·mainPC(SB)启动监控任务</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#42-cpu" class="nav-link">4.2 主动让出 CPU</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#43-cpu" class="nav-link">4.3 抢占让出 CPU</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#44-cpu" class="nav-link">4.4 系统调用让出 CPU</a>
+            <li class="nav-item" data-bs-level="2"><a href="#24-runtimemstartsb" class="nav-link">2.4 最后 runtime·mstart(SB)启动调度循环</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#5-g" class="nav-link">5.待执行 G 的来源</a>
+            <li class="nav-item" data-bs-level="1"><a href="#3" class="nav-link">3.调度循环都做了什么</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#51-go-func-g" class="nav-link">5.1 go func 创建 G</a>
+            <li class="nav-item" data-bs-level="2"><a href="#31" class="nav-link">3.1 调度器如何开启调度循环</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#52-epoll" class="nav-link">5.2 epoll 来源</a>
+            <li class="nav-item" data-bs-level="2"><a href="#32" class="nav-link">3.2 调度器如何进行调度循环</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#33" class="nav-link">3.3 多个线程下如何调度</a>
               <ul class="nav flex-column">
               </ul>
             </li>
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#6-cpu" class="nav-link">6.看几个主动让出 CPU 的场景</a>
+            <li class="nav-item" data-bs-level="1"><a href="#4-cpu" class="nav-link">4.调度循环中如何让出 CPU</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#61-timesleep" class="nav-link">6.1 time.Sleep</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#62-syncmutex" class="nav-link">6.2 sync.Mutex</a>
+            <li class="nav-item" data-bs-level="2"><a href="#41-cpu" class="nav-link">4.1 执行完成让出 CPU</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#63-channel" class="nav-link">6.3 channel</a>
+            <li class="nav-item" data-bs-level="2"><a href="#42-cpu" class="nav-link">4.2 主动让出 CPU</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#43-cpu" class="nav-link">4.3 抢占让出 CPU</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#44-cpu" class="nav-link">4.4 系统调用让出 CPU</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#5-g" class="nav-link">5.待执行 G 的来源</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#51-go-func-g" class="nav-link">5.1 go func 创建 G</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#52-epoll" class="nav-link">5.2 epoll 来源</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="1"><a href="#6-cpu" class="nav-link">6.看几个主动让出 CPU 的场景</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#61-timesleep" class="nav-link">6.1 time.Sleep</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#62-syncmutex" class="nav-link">6.2 sync.Mutex</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#63-channel" class="nav-link">6.3 channel</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -2019,19 +2041,20 @@ func recv(c *hchan, sg *sudog, ep unsafe.Pointer, unlockf func(), skip int) {
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../../../js/bootstrap.bundle.min.js"></script>
         <script>
             var base_url = "../../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../../../js/base.js" defer></script>
-        <script src="../../../search/main.js" defer></script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>From here you can search these documents. Enter your search terms below.</p>
@@ -2051,7 +2074,7 @@ func recv(c *hchan, sg *sudog, ep unsafe.Pointer, unlockf func(), skip int) {
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <table class="table">

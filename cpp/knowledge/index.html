@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +10,15 @@
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>Knowledge Point - My Read Note</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
-
-        <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -25,7 +26,7 @@
             <div class="container">
                 <a class="navbar-brand" href="../..">My Read Note</a>
                 <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -33,11 +34,11 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">编程语言 <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">编程语言</a>
                                 <ul class="dropdown-menu">
                                     
   <li class="dropdown-submenu">
@@ -49,7 +50,11 @@
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">Knowledge Point</a>
+    <a href="../base/" class="dropdown-item">基础</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Knowledge Point</a>
 </li>
     </ul>
   </li>
@@ -107,12 +112,16 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Algorithm <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Algorithm</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
     <a href="../../al/tree/" class="dropdown-item">Tree</a>
+</li>
+                                    
+<li>
+    <a href="../../al/sort/" class="dropdown-item">Sort</a>
 </li>
                                     
 <li>
@@ -124,9 +133,13 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Network & OS <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Network & OS</a>
                                 <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../os/network/" class="dropdown-item">Network</a>
+</li>
                                     
 <li>
     <a href="../../os/tools/" class="dropdown-item">Tools</a>
@@ -145,8 +158,8 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">数据库和消息队列 <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">数据库和消息队列</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -154,11 +167,15 @@
 </li>
                                     
 <li>
-    <a href="../../db/kv/" class="dropdown-item">KV</a>
+    <a href="../../db/redis/" class="dropdown-item">Redis</a>
 </li>
                                     
 <li>
     <a href="../../db/mongodb/" class="dropdown-item">MongoDb</a>
+</li>
+                                    
+<li>
+    <a href="../../db/other/" class="dropdown-item">其它数据库</a>
 </li>
                                     
 <li>
@@ -172,6 +189,11 @@
 <li>
     <a href="../../third_party/tools/" class="dropdown-item">Tools</a>
 </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Dev Ops</a>
+                                <ul class="dropdown-menu">
                                     
 <li>
     <a href="../../devops/docker/" class="dropdown-item">Docker</a>
@@ -182,22 +204,22 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../../links/" class="nav-link">Links</a>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../cpp11/" class="nav-link">
+                                <a rel="prev" href="../base/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -213,39 +235,35 @@
 
         <div class="container">
             <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#violatile" class="nav-link">violatile</a>
+            <li class="nav-item" data-bs-level="2"><a href="#violatile" class="nav-link">violatile</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="2"><a href="#defineinline" class="nav-link">define和inline函数有什么差别</a>
+            <li class="nav-item" data-bs-level="2"><a href="#defineinline" class="nav-link">define和inline函数有什么差别</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">结构体中位域的对齐：</a>
+            <li class="nav-item" data-bs-level="2"><a href="#_1" class="nav-link">结构体中位域的对齐：</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#_2" class="nav-link">内存泄露</a>
+            <li class="nav-item" data-bs-level="1"><a href="#_2" class="nav-link">内存泄露</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">编译器选项</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">手动检测</a>
+            <li class="nav-item" data-bs-level="2"><a href="#_3" class="nav-link">一些第三方工具</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -267,15 +285,15 @@ inline函数是函数，但在编译时不单独产生代码，而是将代码�
 3） 如果相邻的位域字段的类型不同，则各编译器的具体实现有差异， VC6 采取不压缩方式（不同位域字段存放在不同的位域类型字节中）， Dev-C++ 和 GCC 都采取压缩方式； 
 4） 如果位域字段之间穿插着非位域字段，则不进行压缩。</p>
 <h1 id="_2">内存泄露</h1>
-<p>htop top 查看内存增长
-重载内存分配释放 malloc/free new/delete
-hook 方式dlsym 
-addr2line</p>
-<h2 id="_3">编译器选项</h2>
-<p>ASAN</p>
-<p>## 三方工具
-Valgrind</p>
-<h2 id="_4">手动检测</h2></div>
+<p>如何发现：htop top 查看内存增长， 日志
+如何解决：
+1. 重载或者重写内存分配释放 malloc/free new/delete 
+2. 使用 hook方式，（dlsym） ，重写malloc /free<br />
+3. 使用智能指针 
+4. 使用三方工具 Valgrind， Sanitizer等</p>
+<h2 id="_3">一些第三方工具</h2>
+<p>addr2line 地
+Sanitizer 使用ASan时，只需gcc选项加上-fsanitize=address选项</p></div>
             </div>
         </div>
 
@@ -283,19 +301,20 @@ Valgrind</p>
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
         <script>
             var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../../js/base.js" defer></script>
-        <script src="../../search/main.js" defer></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>From here you can search these documents. Enter your search terms below.</p>
@@ -315,7 +334,7 @@ Valgrind</p>
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <table class="table">

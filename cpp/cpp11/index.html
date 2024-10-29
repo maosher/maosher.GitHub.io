@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +10,15 @@
         <link rel="shortcut icon" href="../../img/favicon.ico">
         <title>C++11 - My Read Note</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
-
-        <script src="../../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -25,7 +26,7 @@
             <div class="container">
                 <a class="navbar-brand" href="../..">My Read Note</a>
                 <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -33,11 +34,11 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">编程语言 <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">编程语言</a>
                                 <ul class="dropdown-menu">
                                     
   <li class="dropdown-submenu">
@@ -45,7 +46,11 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="./" class="dropdown-item active">C++11</a>
+    <a href="./" class="dropdown-item active" aria-current="page">C++11</a>
+</li>
+            
+<li>
+    <a href="../base/" class="dropdown-item">基础</a>
 </li>
             
 <li>
@@ -107,12 +112,16 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Algorithm <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Algorithm</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
     <a href="../../al/tree/" class="dropdown-item">Tree</a>
+</li>
+                                    
+<li>
+    <a href="../../al/sort/" class="dropdown-item">Sort</a>
 </li>
                                     
 <li>
@@ -124,9 +133,13 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Network & OS <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Network & OS</a>
                                 <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../os/network/" class="dropdown-item">Network</a>
+</li>
                                     
 <li>
     <a href="../../os/tools/" class="dropdown-item">Tools</a>
@@ -145,8 +158,8 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">数据库和消息队列 <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">数据库和消息队列</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -154,11 +167,15 @@
 </li>
                                     
 <li>
-    <a href="../../db/kv/" class="dropdown-item">KV</a>
+    <a href="../../db/redis/" class="dropdown-item">Redis</a>
 </li>
                                     
 <li>
     <a href="../../db/mongodb/" class="dropdown-item">MongoDb</a>
+</li>
+                                    
+<li>
+    <a href="../../db/other/" class="dropdown-item">其它数据库</a>
 </li>
                                     
 <li>
@@ -172,6 +189,11 @@
 <li>
     <a href="../../third_party/tools/" class="dropdown-item">Tools</a>
 </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Dev Ops</a>
+                                <ul class="dropdown-menu">
                                     
 <li>
     <a href="../../devops/docker/" class="dropdown-item">Docker</a>
@@ -182,17 +204,17 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../../links/" class="nav-link">Links</a>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../../about/" class="nav-link">About</a>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
@@ -202,7 +224,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../knowledge/" class="nav-link">
+                                <a rel="next" href="../base/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -213,36 +235,44 @@
 
         <div class="container">
             <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#c11" class="nav-link">C++11</a>
+            <li class="nav-item" data-bs-level="1"><a href="#shared_ptr-weak_ptr-unique_ptr" class="nav-link">shared_ptr &amp; weak_ptr &amp; unique_ptr</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#shared_ptr-weak_ptr-unique_ptr" class="nav-link">shared_ptr &amp; weak_ptr &amp; unique_ptr</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#stdmove" class="nav-link">std::move</a>
+            <li class="nav-item" data-bs-level="2"><a href="#unique_ptr" class="nav-link">unique_ptr</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#stdforward" class="nav-link">std::forward</a>
+            <li class="nav-item" data-bs-level="2"><a href="#shared_ptr" class="nav-link">构造一个 shared_ptr 管理对象</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#stdbind-stdfunction" class="nav-link">std::bind &amp; std::function</a>
+            <li class="nav-item" data-bs-level="2"><a href="#stdenable_shared_from_this" class="nav-link">std::enable_shared_from_this</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#lambda" class="nav-link">lambda</a>
+            <li class="nav-item" data-bs-level="2"><a href="#stdmove" class="nav-link">std::move</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#stdforward" class="nav-link">std::forward</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#stdbind-stdfunction" class="nav-link">std::bind &amp; std::function</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#lambda" class="nav-link">lambda</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -253,22 +283,22 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="c11">C++11</h1>
-<h2 id="shared_ptr-weak_ptr-unique_ptr">shared_ptr &amp; weak_ptr &amp; unique_ptr</h2>
-<h3 id="unique_ptr">unique_ptr</h3>
+<p>C++11</p>
+<h1 id="shared_ptr-weak_ptr-unique_ptr">shared_ptr &amp; weak_ptr &amp; unique_ptr</h1>
+<h2 id="unique_ptr">unique_ptr</h2>
 <p>unique_ptr对象始终是关联的原始指针的唯一所有者。我们无法复制unique_ptr对象，它只能移动。
 reset() 重置unique_ptr为空，delete其关联的指针。
 release()   不delete关联指针，并返回关联指针。释放关联指针的所有权，unique_ptr为空。
 get()   仅仅返回关联指针
 std::unique_ptr<Vec3> v1 = std::make_unique<Vec3>() (c++14)</p>
-<h3 id="shared_ptr">构造一个 shared_ptr 管理对象</h3>
+<h2 id="shared_ptr">构造一个 shared_ptr 管理对象</h2>
 <p>class Test{}
 std::shared_ptr<ClassTest> ps = std::make_shared<ClassTest>();
 //指定 default_delete 作为释放规则
 std::shared_ptr<int> p6(new int[10], std::default_delete<int[]>());
 //初始化智能指针，并自定义释放规则
 std::shared_ptr<int> p7(new int[10], deleteInt);</p>
-<h3 id="stdenable_shared_from_this">std::enable_shared_from_this</h3>
+<h2 id="stdenable_shared_from_this">std::enable_shared_from_this</h2>
 <p>当类A被share_ptr管理，且在类A的成员函数里需要把当前类对象作为参数传给其他函数时，就需要传递一个指向自身的share_ptr。
 如果直接传递share_ptr<this>会造成2个非共享的share_ptr指向同一个对象，未增加引用计数导对象被析构两次。</p>
 <h2 id="stdmove">std::move</h2>
@@ -295,7 +325,7 @@ int&amp;&amp; k = i;//编译不过，这里i是一个左值，右值引用只能
 只绑定部分参数，减少可调用对象传入的参数</p>
 <p>std::placeholders </p>
 <h2 id="lambda">lambda</h2>
-<p><strong> <a href="参数">捕捉列表</a>mutable—&gt;返回值类型{ 函数体 } </strong>  </p>
+<p>** <a href="参数">捕捉列表</a>mutable—&gt;返回值类型{ 函数体 } **  </p>
 <ul>
 <li>
 <p>[捕捉列表]：该列表总是出现在lambda表达式的起始位置，编译器根据[]来判断接下来的代码是否为lambda表达式，捕捉列表能够捕捉当前作用域中的变量，供lambda函数使用。    </p>
@@ -321,19 +351,20 @@ int&amp;&amp; k = i;//编译不过，这里i是一个左值，右值引用只能
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
         <script>
             var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../../js/base.js" defer></script>
-        <script src="../../search/main.js" defer></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>From here you can search these documents. Enter your search terms below.</p>
@@ -353,7 +384,7 @@ int&amp;&amp; k = i;//编译不过，这里i是一个左值，右值引用只能
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <table class="table">
