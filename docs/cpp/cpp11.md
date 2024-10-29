@@ -1,15 +1,15 @@
-# C++11
+C++11
 
-## shared_ptr & weak_ptr & unique_ptr
+# shared_ptr & weak_ptr & unique_ptr
 
-### unique_ptr
+## unique_ptr
 unique_ptr对象始终是关联的原始指针的唯一所有者。我们无法复制unique_ptr对象，它只能移动。
 reset()	重置unique_ptr为空，delete其关联的指针。
 release()	不delete关联指针，并返回关联指针。释放关联指针的所有权，unique_ptr为空。
 get()	仅仅返回关联指针
 std::unique_ptr<Vec3> v1 = std::make_unique<Vec3>() (c++14)
 
-### 构造一个 shared_ptr 管理对象
+## 构造一个 shared_ptr 管理对象
 class Test{}
 std::shared_ptr<ClassTest> ps = std::make_shared<ClassTest>();
 //指定 default_delete 作为释放规则
@@ -17,7 +17,7 @@ std::shared_ptr<int> p6(new int[10], std::default_delete<int[]>());
 //初始化智能指针，并自定义释放规则
 std::shared_ptr<int> p7(new int[10], deleteInt);
 
-### std::enable_shared_from_this
+## std::enable_shared_from_this
 当类A被share_ptr管理，且在类A的成员函数里需要把当前类对象作为参数传给其他函数时，就需要传递一个指向自身的share_ptr。
 如果直接传递share_ptr<this>会造成2个非共享的share_ptr指向同一个对象，未增加引用计数导对象被析构两次。
 
